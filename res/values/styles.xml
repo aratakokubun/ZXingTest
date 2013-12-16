@@ -1,0 +1,100 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!-- image button -->
+    <style name="refresh">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@android:drawable/stat_notify_sync</item>
+    </style>
+
+    <style name="add">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@android:drawable/ic_input_add</item>
+    </style>
+
+    <style name="post">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@android:drawable/ic_menu_edit</item>
+    </style>
+    
+    <style name="tweet">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">38dp</item>
+        <item name="android:layout_marginLeft">38dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/twitter_bluebird2</item>
+    </style>
+
+    <style name="delete">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@android:drawable/ic_menu_delete</item>
+    </style>
+
+    <!-- book detail text view -->
+    <style name="detail_text_box">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+    </style>
+    
+    <style name="detail_value_box">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+        <item name="android:background">@color/white_box</item>
+    </style>
+    
+    <style name="frame_box">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@layout/border</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    
+    <style name="frame_box_tweet">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@layout/border_tweet</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    
+</resources>
