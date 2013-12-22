@@ -1,0 +1,14 @@
+button_finish_edit
+size: 60*200 px
+back color: 2D4A85 & 7497BC
+back line: type4 & 10%
+grid: black 1px
+text: "完了" & HGRGE & FFFFFF & 40p
+corner round: 4px
+clear type: type1
+
+button_finish_flat
+size: 50*200 px
+back color: 4060A0
+text: "完了" & HGRGE & F0F2FF & 30p
+

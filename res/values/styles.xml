@@ -81,6 +81,27 @@
         <item name="android:background">@color/white_box</item>
     </style>
     
+    <style name="note_text_box">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">34dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+    </style>
+    
+    <style name="note_value_box">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@layout/border_insert_value</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+    </style>
+    
     <style name="frame_box">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -95,6 +116,14 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@layout/border_tweet</item>
         <item name="android:gravity">center_vertical</item>
+    </style>
+    
+    <style name="frame_box_insert">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@layout/border_insert</item>
+        <item name="android:gravity">center_vertical|left</item>
     </style>
     
 </resources>

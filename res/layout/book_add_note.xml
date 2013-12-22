@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white_back"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_theme"
+        android:gravity="center"
+        android:text="@string/add_note_header"
+        android:textSize="25sp" />
+
+    <LinearLayout style="@style/frame_box" >
+        <TextView
+            android:id="@+id/title_box"
+            style="@style/detail_text_box"
+            android:text="@string/title_box" />
+
+        <TextView
+            android:id="@+id/title_value_box"
+            style="@style/detail_value_box"
+            android:text="@string/dummy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:gravity="right|center_vertical" >
+
+        <TextView
+            android:id="@+id/memo_text"
+            style="@style/note_text_box"
+            android:layout_marginTop="10dp"
+            android:text="@string/add_note_content" />
+
+        <android.support.v7.widget.Space
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/button_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/dummy"
+            android:src="@drawable/button_finish_flat" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/note_edit_text"
+        style="@style/note_value_box"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

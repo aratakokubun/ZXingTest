@@ -120,7 +120,7 @@ public class SearchBookWeb extends ZXingTestActivity
 				if(ManageRequestCode.throwHttpRequestCode
 						(temp_isbn, OPERATION_CODE.ITEM_LOOKUP, RESPONSE_GROUP_CODE.ITEMATTRIBUTES)){
 					//全ての本の詳細情報のデータをfileBookDataに渡し、BookListActivityを起動
-					fileBookData.putBookArray(temp_isbn, temp_step_2, ManageRequestCode.bookRow);
+					fileBookData.putBookArray(ManageRequestCode.bookRow);
 					BookDetail.setBookDetailInfo(ManageRequestCode.bookRow);
 		        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_DETAIL);
 					Intent i = new Intent(this, BookListActivity.class);

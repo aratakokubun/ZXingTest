@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 public class FileBookData extends FileIO {
@@ -19,6 +20,9 @@ public class FileBookData extends FileIO {
 	private static boolean isDataLoaded = false;
 	private static int site;
 	private static JSONArray bookArray;
+	
+	// TODO
+	// exceptionが起きた時に備え，バックアップデータを保持しておいて，データを復帰させるべき
 	
 	/*---------------------------------------------------------------------------------------*/
 	public FileBookData(Context context)
@@ -132,15 +136,18 @@ public class FileBookData extends FileIO {
 	}
 	
 	/*---------------------------------------------------------------------------------------*/
-	public boolean putBookArray(String isbn, String step_2, BookRow bookRow)
+	public boolean putBookArray(BookRow bookRow)
 	{
+		String isbn = bookRow.getIsbn();
 		try {
 			if(searchBookIsbn(isbn)){
+				// TODO
+				// 既に読み込み済みのデータ
 				return false;
 			} else {
 				JSONObject book = new JSONObject();
 				book.put(J.ISBN, isbn);
-				book.put(J.STEP_2, step_2);
+				book.put(J.STEP_2, bookRow.getStep2());
 				book.put(J.TITLE, bookRow.getTitle());
 				book.put(J.AUTHOR, bookRow.getAuthor());
 				book.put(J.LABEL, bookRow.getLabel());
@@ -160,6 +167,7 @@ public class FileBookData extends FileIO {
 	}
 	
 	/*---------------------------------------------------------------------------------------*/
+	@SuppressLint("SimpleDateFormat")
 	public BookRow recallBookArray(int index)
 	{
 		try {
@@ -169,10 +177,45 @@ public class FileBookData extends FileIO {
 			json.put(J.LATEST, sdf.format(cal.getTime()));
 			json.put(J.REPETITION, json.getInt(J.REPETITION)+1);
 			bookArray.put(index, json);
-			return new BookRow(json.getString(J.TITLE), json.getString(J.AUTHOR), json.getString(J.LABEL), json.getString(J.BINDING), json.getString(J.PRICE)
-					, json.getString(J.NOTE), json.getString(J.FIRST), json.getString(J.LATEST), json.getString(J.REPETITION));
+			return new BookRow(
+					json.getString(J.ISBN),
+					json.getString(J.STEP_2),
+					json.getString(J.TITLE),
+					json.getString(J.AUTHOR),
+					json.getString(J.LABEL),
+					json.getString(J.BINDING),
+					json.getString(J.PRICE),
+					json.getString(J.NOTE),
+					json.getString(J.FIRST),
+					json.getString(J.LATEST),
+					json.getString(J.REPETITION));
 		} catch (JSONException e) {
 			return null;
+		}
+	}
+	
+	/*---------------------------------------------------------------------------------------*/
+	public void editBookData(BookRow bookRow){
+		String isbn = bookRow.getIsbn();
+		int index = searchBookJsonIndex(isbn);
+		if(index != -1){
+			try {
+				JSONObject book = new JSONObject();
+				book.put(J.ISBN, isbn);
+				book.put(J.STEP_2, bookRow.getStep2());
+				book.put(J.TITLE, bookRow.getTitle());
+				book.put(J.AUTHOR, bookRow.getAuthor());
+				book.put(J.LABEL, bookRow.getLabel());
+				book.put(J.BINDING, bookRow.getBinding());
+				book.put(J.PRICE, bookRow.getPrice());
+				book.put(J.NOTE, bookRow.getNote());
+				book.put(J.FIRST, bookRow.getFirst());
+				book.put(J.LATEST, bookRow.getLatest());
+				book.put(J.REPETITION, bookRow.getRepetition());
+				bookArray.put(index, book); // Replace at index
+				saveData();
+			} catch (JSONException e) {
+			}
 		}
 	}
 	
@@ -182,6 +225,47 @@ public class FileBookData extends FileIO {
 		bookArray = new JSONArray();
 		saveData();
 		return true;
+	}
+	
+	public void deleteBookArray(int index){
+		int bookLength = bookArray.length();
+		if(bookLength <= index) return;
+
+		// Clone JSON array
+		JSONArray array = bookArray;
+		// Delete JSON array
+		bookArray = new JSONArray();
+		try {
+			for (int i = 0; i < bookLength; i++) {
+				if(i != index){
+					// Reconstruct data except for object at index
+					JSONObject next = array.getJSONObject(i);
+					bookArray.put(next);
+				}
+			}
+			saveData();
+		} catch (JSONException e) {
+		}
+	}
+	
+	public void deleteBookArray(String isbn){
+		int bookLength = bookArray.length();
+
+		// Clone JSON array
+		JSONArray array = bookArray;
+		// Delete JSON array
+		bookArray = new JSONArray();
+		try {
+			for (int i = 0; i < bookLength; i++) {
+				// Reconstruct data except for object at index
+				JSONObject next = array.getJSONObject(i);
+				if(isbn != next.getString(J.ISBN)){
+					bookArray.put(next);
+				}
+			}
+			saveData();
+		} catch (JSONException e) {
+		}
 	}
 	
 	/*---------------------------------------------------------------------------------------*/

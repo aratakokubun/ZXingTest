@@ -1,0 +1,51 @@
+<resources>
+    <!-- アプリケーション名 -->
+    <string name="app_name">ZXingTest</string>
+    
+    <!-- Amazonアクセスキー -->
+	<string name="access_key">AKIAJEZBQ55UN33EJY2A</string>
+	
+	<!-- Twitter API -->
+	<string name="twitter_consumer_key">ykTzqBElyOkFlkLBHON3Q</string>
+    <string name="twitter_consumer_secret">v8LluZfl3KFVP6PaZmDgMcdbRhQjbqjGhfvRWvwbnsk</string>	
+		
+	<!-- xml -->
+	<!-- caution回避用のダミー -->
+	<string name="dummy"></string>
+	<!-- book list main -->
+	<string name="please_wait">Please Wait...</string>
+	<!-- book list -->
+	<string name="list_header">読み込んだ本のリスト</string>
+	<!-- book detail -->
+	<string name="detail_header">本の詳細情報</string>
+	<string name="title_box">タイトル</string>
+	<string name="author_box">著者</string>
+	<string name="label_box">出版社</string>
+	<string name="binding_box">本の分類</string>
+	<string name="price_box">価格</string>
+	<string name="note_box">メモ</string>
+	<!-- book add note -->
+	<string name="add_note_header">メモの追加・編集</string>
+	<string name="add_note_content">メモの内容</string>
+	<!-- Twitter認証 -->
+	<string name="twitter_oauth">ツイッター認証</string>
+	<string name="start_oauth">ツイッター認証を開始します．\nよろしいですか？</string>
+	<!-- <string name="twitter_callback_url">honrec://twitter</string> -->
+	<string name="twitter_callback_url">https://api.twitter.com</string>
+	<string name="twitter_ouath_success">認証に成功しました！</string>
+	<string name="twitter_ouath_failed">認証に失敗しました.</string>
+	<string name="action_view_launch_failed">ブラウザの起動に失敗しました．非対応の端末の可能性があります．もう一度認証をやり直して下さい．</string>
+	
+	<!-- オプションメニュー -->
+	<string name="set_search_engin">検索サイトの設定</string>
+	<string name="view_archive">過去に読み込んだデータの参照</string>
+	<string name="launch_camera">本のバーコードを読み込む(カメラを起動)</string>
+	
+	<!-- エラー時のメッセージ -->
+	<string name="read_error">バーコードの読み込みに失敗しました．もう一度読み込みを試してみてください．</string>
+	<string name="access_error">通信に失敗しました．電波のいい場所でで再度試してください．</string>
+	
+	<!-- ボタン -->
+	<string name="tweet">twitterに投稿</string>
+	
+</resources>

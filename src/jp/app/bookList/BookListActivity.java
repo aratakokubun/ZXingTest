@@ -15,7 +15,8 @@ public class BookListActivity extends Activity
 {
 	public static final int BOOK_LIST = 0;
 	public static final int BOOK_DETAIL = 1;
-	public static final int VIEW_LENGTH = 2;
+	public static final int BOOK_ADD_NOTE = 2;
+	public static final int VIEW_LENGTH = 3;
 	
 	private static final LayoutView[] lv = new LayoutView[VIEW_LENGTH];
 	private static int viewId = BOOK_LIST;
@@ -70,6 +71,9 @@ public class BookListActivity extends Activity
 			case BOOK_DETAIL:
 				changeView(BOOK_LIST);
 				return false;
+			case BOOK_ADD_NOTE:
+				changeView(BOOK_DETAIL);
+				return false;
 			}
 		}
 		return super.onKeyDown(keyCode, event);
@@ -81,6 +85,8 @@ public class BookListActivity extends Activity
 		lv[BOOK_LIST].initView(R.layout.book_list);
 		lv[BOOK_DETAIL] = new BookDetail(this);
 		lv[BOOK_DETAIL].initView(R.layout.book_detail);
+		lv[BOOK_ADD_NOTE] = new BookAddNote(this);
+		lv[BOOK_ADD_NOTE].initView(R.layout.book_add_note);
 	}
 	
 	/*---------------------------------------------------------------------------------------*/

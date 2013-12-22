@@ -40,7 +40,9 @@ public class BookDetail extends LayoutView {
 		edit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//TODO
+				BookAddNote.setBookDetailInfo(bookRow);
+				activity.requestPrepare(BookListActivity.BOOK_ADD_NOTE);
+				activity.changeView(BookListActivity.BOOK_ADD_NOTE);
 			}
 		});
 		
@@ -49,13 +51,13 @@ public class BookDetail extends LayoutView {
 		tweet.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//TODO 一度認証が終わっていたらもうしなくていい
+				//TODO 認証をしたらそれをファイルに記録しておき，一度認証が終わっていたらもうしなくていい
 				if(!TwitterUtils.hasAccessToken(activity)){
 					//showDialogTwitterOuath();
 					launchTwitterOuath();
 				}
-				//twitter投稿画面に遷移
-				
+				// twitter投稿画面に遷移
+				// TODO
 			}
 		});
 	}

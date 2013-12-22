@@ -21,6 +21,7 @@ import com.amazon.advertising.api.sample.SignedRequestsHelper;
  * &Operation=ItemLookup &ItemId=4344016645
  */
 public class ManageRequestCode {
+	private static boolean D = false;
 	private static final String TAG = "Manage request code";
 	
 	private static final String URL_AMAZON_XML = "http://ecs.amazonaws.jp/onca/xml?";
@@ -117,8 +118,8 @@ public class ManageRequestCode {
 			params.put(ASSOCIATE_TAG, ASSOCIATE_TAG_ANNONYMOUS);
 
 			requestUrl = helper.sign(params);
-			Log.e(TAG, requestUrl);
-			return fetchBookData(requestUrl);
+			if(D) Log.i(TAG, requestUrl);
+			return fetchBookData(requestUrl, itemid, operation);
 		} else {
 			/*
 			 * Here is an example with string form, where the requests
@@ -132,8 +133,8 @@ public class ManageRequestCode {
 					ITEM_ID + "=" + itemid + "&" + 
 					ASSOCIATE_TAG + "=" + ASSOCIATE_TAG_ANNONYMOUS;
 			requestUrl = helper.sign(queryString);
-			Log.e(TAG, requestUrl);
-			return fetchBookData(requestUrl);
+			if(D) Log.i(TAG, requestUrl);
+			return fetchBookData(requestUrl, itemid, operation);
 		}
 	}
 
@@ -167,7 +168,7 @@ public class ManageRequestCode {
 	public static final String AMOUNT = "Amount";
 	public static final String CURRENCY = "CurrencyCode";
 	
-	public static boolean fetchBookData(String requestUrl)
+	public static boolean fetchBookData(String requestUrl, String isbn, String step2)
 	{
 		String title = null;
 		String author = null;
@@ -192,8 +193,8 @@ public class ManageRequestCode {
 			binding = bindingNode.getTextContent();
 			price = currencyNode.getTextContent() + amountNode.getTextContent();
 			
-			Log.e(TAG, title + ", " + author + ", " + label + ", " + binding + ", " + price);
-			bookRow = new BookRow(title, author, label, binding, price);
+			if(D) Log.i(TAG, isbn + ", " + step2 + ", " + title + ", " + author + ", " + label + ", " + binding + ", " + price);
+			bookRow = new BookRow(isbn, step2, title, author, label, binding, price);
 			return true;
 		} catch (Exception e) {
 			//throw new RuntimeException(e);

@@ -1,9 +1,12 @@
 package jp.app.bookList;
 
+import android.annotation.SuppressLint;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class BookRow {
+	private String isbn = "";
+	private String step2 = "";
 	private String title = "";
 	private String author = "";
 	private String label = "";
@@ -18,7 +21,9 @@ public class BookRow {
 
 	}
 
-	public BookRow(String title, String author, String label, String binding, String price) {
+	public BookRow(String isbn, String step2, String title, String author, String label, String binding, String price) {
+		this.isbn = isbn;
+		this.step2 = step2;
 		this.title = title;
 		this.author = author;
 		this.label = label;
@@ -27,7 +32,9 @@ public class BookRow {
 		registerTime();
 	}
 
-	public BookRow(String title, String author, String label, String binding, String price, String note, String first, String latest, String repetition) {
+	public BookRow(String isbn, String step2, String title, String author, String label, String binding, String price, String note, String first, String latest, String repetition) {
+		this.isbn = isbn;
+		this.step2 = step2;
 		this.title = title;
 		this.author = author;
 		this.label = label;
@@ -39,6 +46,7 @@ public class BookRow {
 		this.repetition = repetition;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	public void registerTime() {
 		if (first == null) {
 			Calendar cal = Calendar.getInstance();
@@ -51,6 +59,14 @@ public class BookRow {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public String getIsbn(){
+		return isbn;
+	}
+	
+	public String getStep2(){
+		return step2;
 	}
 
 	public String getTitle() {

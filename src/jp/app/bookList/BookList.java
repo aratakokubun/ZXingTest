@@ -50,7 +50,6 @@ public class BookList extends LayoutView {
 				ListView parentList = (ListView) parent;
 				BookRow item = (BookRow) parentList.getItemAtPosition(position);
 				BookDetail.setBookDetailInfo(item);
-				//TODO
 				activity.requestPrepare(BookListActivity.BOOK_DETAIL);
 				activity.changeView(BookListActivity.BOOK_DETAIL);
 			}
@@ -78,6 +77,8 @@ public class BookList extends LayoutView {
 				if(ja.opt(index) != null){
 					JSONObject next = ja.getJSONObject(index);
 					list.add(new BookRow(
+							next.getString(J.ISBN),
+							next.getString(J.STEP_2),
 							next.getString(J.TITLE),
 							next.getString(J.AUTHOR),
 							next.getString(J.LABEL),

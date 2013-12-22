@@ -10,12 +10,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class TwitterOuath extends Activity {
 
+	private static final String TAG = "Twitter Ouath";
+	private static final boolean D = true;
+	
     private String mCallbackURL;
     private Twitter mTwitter;
     private RequestToken mRequestToken;
@@ -32,6 +36,7 @@ public class TwitterOuath extends Activity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	// TODO 通信中は同期してクルクルを表示
                 startAuthorize();
             }
         });
@@ -58,7 +63,7 @@ public class TwitterOuath extends Activity {
                     mRequestToken = mTwitter.getOAuthRequestToken(mCallbackURL);
                     return mRequestToken.getAuthorizationURL();
                 } catch (TwitterException e) {
-                    e.printStackTrace();
+                    if(D) e.printStackTrace();
                 }
                 return null;
             }
@@ -66,7 +71,9 @@ public class TwitterOuath extends Activity {
             @Override
             protected void onPostExecute(String url) {
                 if (url != null) {
+                    if(D) Log.e(TAG, "ready to get intent");
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    if(D) Log.e(TAG, "ready to start activity intent");
                     startActivity(intent);
                 } else {
                     // 失敗。。。
