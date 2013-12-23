@@ -15,11 +15,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 public class BookList extends LayoutView {
+	private static ImageView camera;
 	private static ImageView add;
 	private static ListView book;
 	private static ArrayList<BookRow> list;
 	private static BookListRowAdapter adapter;
 
+	// TODO
+	// ios の様な削除編集．各リストに対してサイドから削除ボタンがにゅっと出て来る感じ
+	
 	public BookList(BookListActivity bookListActivity) {
 		super(bookListActivity);
 	}
@@ -29,17 +33,27 @@ public class BookList extends LayoutView {
 		super.initView(id);
 		prepared = false;
 		
-		//add button
+		// Camera button
+		camera  = (ImageView) view.findViewById(R.id.button_camera);
+		camera.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Finish this activity and move to camera mode
+				activity.moveToCamera();
+			}
+		});
+		
+		// Add button
 		add = (ImageView) view.findViewById(R.id.button_add);
 		add.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//TODO
-				//追加
+				//　TODO
+				//　追加・削除処理
 			}
 		});
 		
-		//list view
+		// List view
 		list = new ArrayList<BookRow>();
 		book = (ListView)view.findViewById(R.id.list_book);
 		adapter = new BookListRowAdapter(activity, R.layout.book_list_row, list);

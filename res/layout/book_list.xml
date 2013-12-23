@@ -10,13 +10,16 @@
         android:gravity="right"
         android:background="@color/blue_theme" >
 
+        <ImageView
+            android:id="@+id/button_camera"
+            style="@style/camera"
+            android:contentDescription="@string/dummy" />
+
         <TextView
             android:id="@+id/header"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/list_header"
+            style="@style/header"
             android:textSize="25sp"
-            android:gravity="center" />
+            android:text="@string/list_header" />
 
         <ImageView
             android:id="@+id/button_add"

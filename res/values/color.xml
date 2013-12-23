@@ -7,6 +7,7 @@
     <color name="blue_theme">#4060a0</color>
     <color name="white_back">#e0f0ff</color>
     <color name="text_dark_gray">#203070</color>
+    <color name="text_black">#101030</color>
     <color name="white_box">#f0f2ff</color>
     <color name="reader_back">#55ff6666</color>
     <color name="reader_margin">#55666666</color>

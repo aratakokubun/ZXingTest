@@ -2,12 +2,13 @@ package jp.app.bookList;
 
 import jp.app.fileio.FileBookData;
 import jp.app.zxing.R;
+import jp.app.zxing.SearchBookWeb;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ public class BookListActivity extends Activity
 	private static LinearLayout	title;
 	private static LinearLayout content;
 	
-	public FileBookData fileBookData = new FileBookData(this);
+	public FileBookData fileBookData;
 	
 	/*---------------------------------------------------------------------------------------*/
 	/** Called when the activity is first created. */
@@ -34,6 +35,8 @@ public class BookListActivity extends Activity
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.book_list_main);
+		
+		fileBookData = new FileBookData(this);
 		
 		title = (LinearLayout) findViewById(R.id.title);
 		content = (LinearLayout) findViewById(R.id.content);
@@ -73,7 +76,7 @@ public class BookListActivity extends Activity
 				changeView(BOOK_LIST);
 				return false;
 			case BOOK_ADD_NOTE:
-				break;
+				return false;
 			}
 		}
 		return super.onKeyDown(keyCode, event);
@@ -132,5 +135,12 @@ public class BookListActivity extends Activity
 	public static void setLaunchActivity(int id)
 	{
 		viewId = id;
+	}
+
+	/*---------------------------------------------------------------------------------------*/
+	// Back to camera activity
+	public void moveToCamera(){
+		Intent i = new Intent(this, SearchBookWeb.class);
+		startActivity(i);
 	}
 }

@@ -15,7 +15,7 @@
 	<!-- book list main -->
 	<string name="please_wait">Please Wait...</string>
 	<!-- book list -->
-	<string name="list_header">読み込んだ本のリスト</string>
+	<string name="list_header">本のリスト</string>
 	<!-- book detail -->
 	<string name="detail_header">本の詳細情報</string>
 	<string name="title_box">タイトル</string>

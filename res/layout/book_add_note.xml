@@ -5,16 +5,26 @@
     android:background="@color/white_back"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/header"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue_theme"
-        android:gravity="center"
-        android:text="@string/add_note_header"
-        android:textSize="25sp" />
+        android:gravity="right" >
+
+        <ImageView
+            android:id="@+id/button_back"
+            style="@style/back"
+            android:contentDescription="@string/dummy" />
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/header"
+            android:background="@color/blue_theme"
+            android:text="@string/add_note_header" />
+    </LinearLayout>
 
     <LinearLayout style="@style/frame_box" >
+
         <TextView
             android:id="@+id/title_box"
             style="@style/detail_text_box"
@@ -29,11 +39,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"
-        android:gravity="right|center_vertical" >
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/memo_text"
@@ -57,12 +67,12 @@
         android:id="@+id/note_edit_text"
         style="@style/note_value_box"
         android:layout_height="336dp"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:maxLength="511"
+        android:paddingBottom="2dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:maxLength="511"
-        android:gravity="top|left"
-        android:inputType="textMultiLine" />
+        android:paddingTop="2dp" />
 
 </LinearLayout>

@@ -214,13 +214,14 @@ containing a value of this type.
         public static final int black=0x7f060001;
         public static final int blue_theme=0x7f060003;
         public static final int orange=0x7f060000;
-        public static final int reader_back=0x7f060007;
-        public static final int reader_margin=0x7f060008;
+        public static final int reader_back=0x7f060008;
+        public static final int reader_margin=0x7f060009;
+        public static final int text_black=0x7f060006;
         public static final int text_dark_gray=0x7f060005;
-        public static final int tweet_back=0x7f060009;
+        public static final int tweet_back=0x7f06000a;
         public static final int white=0x7f060002;
         public static final int white_back=0x7f060004;
-        public static final int white_box=0x7f060006;
+        public static final int white_box=0x7f060007;
     }
     public static final class dimen {
         /**  The default gap between components in a layout. 
@@ -240,59 +241,60 @@ containing a value of this type.
         public static final int twitter_bluebird2=0x7f020009;
     }
     public static final class id {
-        public static final int adam=0x7f040028;
+        public static final int adam=0x7f040029;
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
-        public static final int archive=0x7f040035;
+        public static final int archive=0x7f040036;
         public static final int author_box=0x7f04001a;
         public static final int author_value_box=0x7f04001b;
         public static final int binding_box=0x7f04001e;
         public static final int binding_value_box=0x7f04001f;
-        public static final int book_title=0x7f04002c;
+        public static final int book_title=0x7f04002d;
         public static final int bottom=0x7f040005;
         public static final int button_add=0x7f040019;
-        public static final int button_back=0x7f040018;
-        public static final int button_finish=0x7f040016;
-        public static final int button_no=0x7f040033;
+        public static final int button_back=0x7f040012;
+        public static final int button_camera=0x7f040027;
+        public static final int button_finish=0x7f040017;
+        public static final int button_no=0x7f040034;
         public static final int button_tweet=0x7f040024;
-        public static final int button_yes=0x7f040032;
+        public static final int button_yes=0x7f040033;
         public static final int center=0x7f04000c;
         public static final int center_horizontal=0x7f04000a;
         public static final int center_vertical=0x7f040008;
-        public static final int center_view=0x7f040031;
+        public static final int center_view=0x7f040032;
         public static final int clip_horizontal=0x7f04000f;
         public static final int clip_vertical=0x7f04000e;
-        public static final int content=0x7f040029;
+        public static final int content=0x7f04002a;
         public static final int end=0x7f040011;
         public static final int fill=0x7f04000d;
         public static final int fill_horizontal=0x7f04000b;
         public static final int fill_vertical=0x7f040009;
-        public static final int header=0x7f040012;
+        public static final int header=0x7f040013;
         public static final int horizontal=0x7f040000;
         public static final int image_tweet=0x7f040025;
-        public static final int jan_isbn=0x7f04002e;
-        public static final int jan_step2=0x7f040030;
+        public static final int jan_isbn=0x7f04002f;
+        public static final int jan_step2=0x7f040031;
         public static final int label_box=0x7f04001c;
         public static final int label_value_box=0x7f04001d;
         public static final int left=0x7f040006;
-        public static final int list_book=0x7f040027;
-        public static final int margin=0x7f04002f;
-        public static final int memo_text=0x7f040015;
+        public static final int list_book=0x7f040028;
+        public static final int margin=0x7f040030;
+        public static final int memo_text=0x7f040016;
         public static final int note_box=0x7f040022;
-        public static final int note_edit_text=0x7f040017;
+        public static final int note_edit_text=0x7f040018;
         public static final int note_value_box=0x7f040023;
-        public static final int preview_view=0x7f04002d;
+        public static final int preview_view=0x7f04002e;
         public static final int price_box=0x7f040020;
         public static final int price_value_box=0x7f040021;
-        public static final int read_barcode=0x7f040036;
-        public static final int register_time=0x7f04002b;
+        public static final int read_barcode=0x7f040037;
+        public static final int register_time=0x7f04002c;
         public static final int right=0x7f040007;
-        public static final int set_engin=0x7f040034;
+        public static final int set_engin=0x7f040035;
         public static final int start=0x7f040010;
         public static final int text_tweet=0x7f040026;
-        public static final int title=0x7f04002a;
-        public static final int title_box=0x7f040013;
-        public static final int title_value_box=0x7f040014;
+        public static final int title=0x7f04002b;
+        public static final int title_box=0x7f040014;
+        public static final int title_value_box=0x7f040015;
         public static final int top=0x7f040004;
         public static final int vertical=0x7f040001;
     }
@@ -404,21 +406,23 @@ containing a value of this type.
         public static final int AppTheme=0x7f080001;
         public static final int add=0x7f080003;
         public static final int back=0x7f080005;
-        public static final int delete=0x7f080007;
+        public static final int camera=0x7f080006;
+        public static final int delete=0x7f080008;
+        public static final int detail_text_box=0x7f08000a;
+        public static final int detail_value_box=0x7f08000b;
+        public static final int frame_box=0x7f08000e;
+        public static final int frame_box_insert=0x7f080010;
+        public static final int frame_box_tweet=0x7f08000f;
         /**  book detail text view 
          */
-        public static final int detail_text_box=0x7f080008;
-        public static final int detail_value_box=0x7f080009;
-        public static final int frame_box=0x7f08000c;
-        public static final int frame_box_insert=0x7f08000e;
-        public static final int frame_box_tweet=0x7f08000d;
-        public static final int note_text_box=0x7f08000a;
-        public static final int note_value_box=0x7f08000b;
+        public static final int header=0x7f080009;
+        public static final int note_text_box=0x7f08000c;
+        public static final int note_value_box=0x7f08000d;
         public static final int post=0x7f080004;
         /**  image button 
          */
         public static final int refresh=0x7f080002;
-        public static final int tweet=0x7f080006;
+        public static final int tweet=0x7f080007;
     }
     public static final class styleable {
         /** Attributes that can be used with a GridLayout.

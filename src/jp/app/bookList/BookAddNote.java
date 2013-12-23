@@ -2,8 +2,8 @@ package jp.app.bookList;
 
 import jp.app.zxing.R;
 import android.app.Dialog;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +15,7 @@ public class BookAddNote extends LayoutView {
 	private static final String TAG = "Add memo text";
 	
 	private static TextView title;
+	private static ImageView back;
 	private static ImageView finish;
 	private static EditText note;
 	
@@ -30,10 +31,22 @@ public class BookAddNote extends LayoutView {
 		super.initView(id);
 		prepared = false;
 		
-		// note contents
+		// Back button
+		back = (ImageView) view.findViewById(R.id.button_back);
+		back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO 編集破棄の確認ダイアログを出す
+				backToBookDetail();
+			}
+		});
+		
+		// Note contents
+		// FIXME
+		// 編集中にキーボードが隠れる問題
 		note = (EditText) view.findViewById(R.id.note_edit_text);
 		
-		// finish button
+		// Finish button
 		finish = (ImageView) view.findViewById(R.id.button_finish);
 		finish.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -74,6 +87,7 @@ public class BookAddNote extends LayoutView {
 	}
 	
 	private void updateNote(){
+		if(D) Log.i(TAG, "Modify note");
 		bookRow.setNote(note.getText().toString());
 		activity.fileBookData.editBookData(bookRow);
 		BookDetail.setBookDetailInfo(bookRow);
