@@ -3,6 +3,7 @@ package jp.app.bookList;
 import jp.app.zxing.R;
 import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,12 +30,16 @@ public class BookAddNote extends LayoutView {
 		super.initView(id);
 		prepared = false;
 		
+		// note contents
+		note = (EditText) view.findViewById(R.id.note_edit_text);
+		
 		// finish button
 		finish = (ImageView) view.findViewById(R.id.button_finish);
 		finish.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				updateNote();
+				backToBookDetail();
 			}
 		});
 	}
@@ -44,8 +49,9 @@ public class BookAddNote extends LayoutView {
 	{
 		title = (TextView) view.findViewById(R.id.title_value_box);
 		title.setText(bookRow.getTitle());
-		note = (EditText) view.findViewById(R.id.note_edit_text);
 		note.setText(bookRow.getNote());
+		// Show software keyboard
+		activity.showKeyboard(note);
 		prepared = true;
 	}
 	
@@ -68,8 +74,15 @@ public class BookAddNote extends LayoutView {
 	}
 	
 	private void updateNote(){
+		bookRow.setNote(note.getText().toString());
 		activity.fileBookData.editBookData(bookRow);
 		BookDetail.setBookDetailInfo(bookRow);
+	}
+	
+	private void backToBookDetail(){
+		activity.hideKeyboard(note);
+		activity.requestPrepare(BookListActivity.BOOK_DETAIL);
+		activity.changeView(BookListActivity.BOOK_DETAIL);
 	}
 	
 	// -------------------------------------------------------------------------------------------------//

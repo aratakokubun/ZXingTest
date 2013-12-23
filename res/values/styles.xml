@@ -42,9 +42,18 @@
         <item name="android:src">@android:drawable/ic_menu_edit</item>
     </style>
     
+    <style name="back">
+    	<item name="android:layout_width">54dp</item>
+    	<item name="android:layout_height">54dp</item>
+    	<item name="android:layout_marginRight">6dp</item>    
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/ic_menu_back</item>
+    </style>
+    
     <style name="tweet">
         <item name="android:layout_width">54dp</item>
         <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginTop">2dp</item>
         <item name="android:layout_marginRight">38dp</item>
         <item name="android:layout_marginLeft">38dp</item>
         <item name="android:scaleType">fitCenter</item>
@@ -63,8 +72,7 @@
     <style name="detail_text_box">
         <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">54dp</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_marginTop">2dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/text_dark_gray</item>
@@ -72,9 +80,9 @@
     
     <style name="detail_value_box">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginTop">2dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/text_dark_gray</item>
@@ -94,8 +102,9 @@
     <style name="note_value_box">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@layout/border_insert_value</item>
@@ -105,6 +114,10 @@
     <style name="frame_box">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@layout/border</item>
         <item name="android:gravity">center_vertical</item>
@@ -113,6 +126,10 @@
     <style name="frame_box_tweet">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@layout/border_tweet</item>
         <item name="android:gravity">center_vertical</item>

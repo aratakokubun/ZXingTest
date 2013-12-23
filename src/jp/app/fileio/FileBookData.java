@@ -21,8 +21,8 @@ public class FileBookData extends FileIO {
 	private static int site;
 	private static JSONArray bookArray;
 	
-	// TODO
-	// exceptionが起きた時に備え，バックアップデータを保持しておいて，データを復帰させるべき
+	// Backup to restore data when exception occurrs
+	private static JSONArray backupBookArray;
 	
 	/*---------------------------------------------------------------------------------------*/
 	public FileBookData(Context context)
@@ -138,6 +138,7 @@ public class FileBookData extends FileIO {
 	/*---------------------------------------------------------------------------------------*/
 	public boolean putBookArray(BookRow bookRow)
 	{
+		backupBookArray = bookArray; // Take a backup
 		String isbn = bookRow.getIsbn();
 		try {
 			if(searchBookIsbn(isbn)){
@@ -162,6 +163,7 @@ public class FileBookData extends FileIO {
 				return true;
 			}
 		} catch (JSONException e) {
+			bookArray = backupBookArray;
 			return false;
 		}
 	}
@@ -196,6 +198,7 @@ public class FileBookData extends FileIO {
 	
 	/*---------------------------------------------------------------------------------------*/
 	public void editBookData(BookRow bookRow){
+		backupBookArray = bookArray; // Take a backup
 		String isbn = bookRow.getIsbn();
 		int index = searchBookJsonIndex(isbn);
 		if(index != -1){
@@ -215,6 +218,7 @@ public class FileBookData extends FileIO {
 				bookArray.put(index, book); // Replace at index
 				saveData();
 			} catch (JSONException e) {
+				bookArray = backupBookArray;
 			}
 		}
 	}
@@ -245,6 +249,7 @@ public class FileBookData extends FileIO {
 			}
 			saveData();
 		} catch (JSONException e) {
+			bookArray = array;
 		}
 	}
 	
@@ -265,6 +270,7 @@ public class FileBookData extends FileIO {
 			}
 			saveData();
 		} catch (JSONException e) {
+			bookArray = array;
 		}
 	}
 	

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
@@ -72,8 +73,7 @@ public class BookListActivity extends Activity
 				changeView(BOOK_LIST);
 				return false;
 			case BOOK_ADD_NOTE:
-				changeView(BOOK_DETAIL);
-				return false;
+				break;
 			}
 		}
 		return super.onKeyDown(keyCode, event);
@@ -117,6 +117,15 @@ public class BookListActivity extends Activity
 	public void hideKeyboard(View v){
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+	
+	/**
+	 * キーボードを表示する(一旦非表示にした後，再度表示)
+	 */
+	public void showKeyboard(View v){
+		InputMethodManager manager =
+				(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		manager.showSoftInput(v, InputMethodManager.SHOW_FORCED);
 	}
 	
 	/*---------------------------------------------------------------------------------------*/

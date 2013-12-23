@@ -56,15 +56,13 @@
     <EditText
         android:id="@+id/note_edit_text"
         style="@style/note_value_box"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:ems="10"
+        android:layout_height="336dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:maxLength="511"
         android:gravity="top|left"
-        android:inputType="textMultiLine" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="textMultiLine" />
 
 </LinearLayout>

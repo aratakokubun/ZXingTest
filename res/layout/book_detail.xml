@@ -10,12 +10,17 @@
             android:layout_height="wrap_content"
             android:background="@color/blue_theme"
             android:gravity="right" >
+            
+            <ImageView 
+                android:id="@+id/button_back"
+                style="@style/back"
+                android:contentDescription="@string/dummy" />"
 
             <TextView
                 android:id="@+id/header"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.94"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/detail_header"
                 android:textSize="25sp" />
@@ -120,7 +125,7 @@
             android:id="@+id/button_tweet" >
             
             <ImageView
-                android:id="@+id/button_tweet"
+                android:id="@+id/image_tweet"
                 style="@style/tweet"
                 android:contentDescription="@string/dummy" />
             

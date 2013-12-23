@@ -20,6 +20,7 @@ public class BookDetail extends LayoutView {
 	private static TextView binding;
 	private static TextView price;
 	private static TextView note;
+	private static ImageView back;
 	private static ImageView edit;
 	private static LinearLayout tweet;
 	
@@ -35,7 +36,17 @@ public class BookDetail extends LayoutView {
 		super.initView(id);
 		prepared = false;
 		
-		//add button
+		// Back button
+		back = (ImageView) view.findViewById(R.id.button_back);
+		back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				activity.requestPrepare(BookListActivity.BOOK_LIST);
+				activity.changeView(BookListActivity.BOOK_LIST);
+			}
+		});
+		
+		// Edit button
 		edit = (ImageView) view.findViewById(R.id.button_add);
 		edit.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -46,7 +57,7 @@ public class BookDetail extends LayoutView {
 			}
 		});
 		
-		//tweet button
+		// Tweet button
 		tweet = (LinearLayout) view.findViewById(R.id.button_tweet);
 		tweet.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -65,7 +76,7 @@ public class BookDetail extends LayoutView {
 	//--------------------------------------------------------------------------------------------
 	public void setViewInfo()
 	{
-		//detail information text view box
+		// Detail information text view box
 		title = (TextView) view.findViewById(R.id.title_value_box);
 		title.setText(bookRow.getTitle());
 		author = (TextView) view.findViewById(R.id.author_value_box);
@@ -108,7 +119,7 @@ public class BookDetail extends LayoutView {
 		button_yes.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//認証が終わったら投稿画面に移動
+				// 認証が終わったら投稿画面に移動
 				
 				dialog.dismiss();
 			}
