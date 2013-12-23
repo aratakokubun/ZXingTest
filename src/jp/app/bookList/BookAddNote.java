@@ -63,8 +63,6 @@ public class BookAddNote extends LayoutView {
 		title = (TextView) view.findViewById(R.id.title_value_box);
 		title.setText(bookRow.getTitle());
 		note.setText(bookRow.getNote());
-		// Show software keyboard
-		activity.showKeyboard(note);
 		prepared = true;
 	}
 	

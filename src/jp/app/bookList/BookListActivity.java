@@ -42,7 +42,6 @@ public class BookListActivity extends Activity
 		content = (LinearLayout) findViewById(R.id.content);
 		initAllView();
 		
-		this.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		try{
 			changeView(launchViewId);
 		} catch (Exception e) {
