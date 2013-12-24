@@ -18,12 +18,21 @@
     </style>
 
     <!-- image button -->
+    <style name="rotate">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@android:drawable/ic_menu_always_landscape_portrait</item>
+        <item name="android:contentDescription">@string/dummy</item>
+    </style>
+    
     <style name="refresh">
         <item name="android:layout_width">54dp</item>
         <item name="android:layout_height">54dp</item>
         <item name="android:layout_marginLeft">6dp</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:src">@android:drawable/stat_notify_sync</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
 
     <style name="add">
@@ -32,6 +41,7 @@
         <item name="android:layout_marginRight">6dp</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:src">@android:drawable/ic_input_add</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
 
     <style name="post">
@@ -39,7 +49,35 @@
         <item name="android:layout_height">54dp</item>
         <item name="android:layout_marginRight">6dp</item>
         <item name="android:scaleType">fitCenter</item>
-        <item name="android:src">@android:drawable/ic_menu_edit</item>
+        <item name="android:src">@drawable/icon_note</item>
+        <item name="android:contentDescription">@string/dummy</item>
+    </style>
+    
+    <style name="setting">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/icon_settings</item>
+        <item name="android:contentDescription">@string/dummy</item>
+    </style>
+    
+    <style name="note">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/icon_note</item>
+        <item name="android:contentDescription">@string/dummy</item>
+    </style>
+    
+    <style name="list">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/icon_list</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
     
     <style name="back">
@@ -48,6 +86,7 @@
         <item name="android:layout_marginLeft">6dp</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:src">@drawable/ic_menu_back</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
     
     <style name="camera">
@@ -55,7 +94,8 @@
         <item name="android:layout_height">54dp</item>
         <item name="android:layout_marginLeft">6dp</item>
         <item name="android:scaleType">fitCenter</item>
-        <item name="android:src">@android:drawable/ic_menu_camera</item>
+        <item name="android:src">@drawable/icon_camera</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
     
     <style name="tweet">
@@ -66,6 +106,7 @@
         <item name="android:layout_marginLeft">38dp</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:src">@drawable/twitter_bluebird2</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
 
     <style name="delete">
@@ -73,7 +114,8 @@
         <item name="android:layout_height">54dp</item>
         <item name="android:layout_marginLeft">6dp</item>
         <item name="android:scaleType">fitCenter</item>
-        <item name="android:src">@android:drawable/ic_menu_delete</item>
+        <item name="android:src">@drawable/icon_trash</item>
+        <item name="android:contentDescription">@string/dummy</item>
     </style>
 
     <!-- book detail text view -->

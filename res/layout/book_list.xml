@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/button_camera"
             style="@style/camera"
-            android:contentDescription="@string/dummy" />
+        	android:contentDescription="@string/dummy" />
 
         <TextView
             android:id="@+id/header"
@@ -22,9 +22,9 @@
             android:text="@string/list_header" />
 
         <ImageView
-            android:id="@+id/button_add"
-            style="@style/post"
-            android:contentDescription="@string/dummy" />
+            android:id="@+id/button_setting"
+            style="@style/setting"
+        	android:contentDescription="@string/dummy" />
     </LinearLayout>
 
     <ListView

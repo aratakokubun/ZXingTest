@@ -96,14 +96,5 @@ public class BookAddNote extends LayoutView {
 		activity.requestPrepare(BookListActivity.BOOK_DETAIL);
 		activity.changeView(BookListActivity.BOOK_DETAIL);
 	}
-	
-	// -------------------------------------------------------------------------------------------------//
-	private void showDialog(String title, View content) {
-		dialog = new Dialog(activity);
-		dialog.setTitle(title);
-		dialog.setContentView(content);
-		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		dialog.show();
-	}
 
 }

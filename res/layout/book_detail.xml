@@ -14,7 +14,7 @@
             <ImageView 
                 android:id="@+id/button_back"
                 style="@style/back"
-                android:contentDescription="@string/dummy" />"
+       		 	android:contentDescription="@string/dummy" />
 
             <TextView
                 style="@style/header"
@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/button_add"
                 style="@style/post"
-                android:contentDescription="@string/dummy" />
+        		android:contentDescription="@string/dummy" />
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +122,7 @@
             <ImageView
                 android:id="@+id/image_tweet"
                 style="@style/tweet"
-                android:contentDescription="@string/dummy" />
+        		android:contentDescription="@string/dummy" />
             
             <TextView
                 android:id="@+id/text_tweet"

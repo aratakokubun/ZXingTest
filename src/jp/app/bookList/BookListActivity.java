@@ -4,13 +4,17 @@ import jp.app.fileio.FileBookData;
 import jp.app.zxing.R;
 import jp.app.zxing.SearchBookWeb;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager.LayoutParams;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class BookListActivity extends Activity
@@ -28,6 +32,8 @@ public class BookListActivity extends Activity
 	private static LinearLayout content;
 	
 	public FileBookData fileBookData;
+	
+	private Dialog dialog;
 	
 	/*---------------------------------------------------------------------------------------*/
 	/** Called when the activity is first created. */
@@ -70,7 +76,8 @@ public class BookListActivity extends Activity
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			switch(viewId) {
 			case BOOK_LIST:
-				break;
+				showFinishAlert();
+				return true;
 			case BOOK_DETAIL:
 				changeView(BOOK_LIST);
 				return false;
@@ -80,7 +87,37 @@ public class BookListActivity extends Activity
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
+
+	private void showFinishAlert(){
+		showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
+		
+		final ImageView yes = (ImageView) dialog.findViewById(R.id.button_yes);
+		yes.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				finish();
+			}
+		});
+		
+		final ImageView no = (ImageView) dialog.findViewById(R.id.button_no);
+		no.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
 	
+	private void showDialog(View content) {
+		dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(content);
+		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		dialog.show();
+	}
+
 	/*---------------------------------------------------------------------------------------*/
 	private void initAllView() {
 		lv[BOOK_LIST] = new BookList(this);
@@ -141,5 +178,6 @@ public class BookListActivity extends Activity
 	public void moveToCamera(){
 		Intent i = new Intent(this, SearchBookWeb.class);
 		startActivity(i);
+		this.finish();
 	}
 }

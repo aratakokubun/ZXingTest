@@ -124,7 +124,7 @@ public class TwitterOuath extends Activity {
         //別のActivityから起動するので，戻る際Intentを渡す必要はない
         //Intent intent = new Intent(this, MainActivity.class);
         //startActivity(intent);
-        finish();
+        this.finish();
     }
     
 	//--------------------------------------------------------------------------------------------

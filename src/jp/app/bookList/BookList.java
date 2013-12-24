@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 public class BookList extends LayoutView {
 	private static ImageView camera;
-	private static ImageView add;
+	private static ImageView setting;
 	private static ListView book;
 	private static ArrayList<BookRow> list;
 	private static BookListRowAdapter adapter;
@@ -44,8 +44,8 @@ public class BookList extends LayoutView {
 		});
 		
 		// Add button
-		add = (ImageView) view.findViewById(R.id.button_add);
-		add.setOnClickListener(new View.OnClickListener() {
+		setting = (ImageView) view.findViewById(R.id.button_setting);
+		setting.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				//　TODO
@@ -108,6 +108,7 @@ public class BookList extends LayoutView {
 					break;
 				}
 			}
+			book.setScrollingCacheEnabled(false); 
 			prepared = true;
 		} catch (JSONException e) {
 		    e.printStackTrace();

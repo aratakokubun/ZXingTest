@@ -12,8 +12,12 @@
 	<!-- xml -->
 	<!-- caution回避用のダミー -->
 	<string name="dummy"></string>
+	<!-- camera view -->
+	<string name="barcode_upper">バーコード(上)</string>
+	<string name="barcode_lower">バーコード(下)</string>
+	<string name="instruction_landscape">画面を横向きにしてください．</string>
 	<!-- book list main -->
-	<string name="please_wait">Please Wait...</string>
+	<string name="please_wait">Please Wait</string>
 	<!-- book list -->
 	<string name="list_header">本のリスト</string>
 	<!-- book detail -->
@@ -43,7 +47,11 @@
 	
 	<!-- エラー時のメッセージ -->
 	<string name="read_error">バーコードの読み込みに失敗しました．もう一度読み込みを試してみてください．</string>
-	<string name="access_error">通信に失敗しました．電波のいい場所でで再度試してください．</string>
+	<string name="get_error">本の情報を取得できませんでした．電波のいい場所で再度試すか，リストへの追加を手動で行ってください．</string>
+	<string name="access_error">通信に失敗しました．電波のいい場所で再度試してください．</string>
+	
+	<!-- 修了ボタンを押した際のアラートメッセージ -->
+	<string name="finish_alert">アプリを終了しますか？</string>
 	
 	<!-- ボタン -->
 	<string name="tweet">twitterに投稿</string>

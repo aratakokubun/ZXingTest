@@ -13,8 +13,7 @@
 
         <ImageView
             android:id="@+id/button_back"
-            style="@style/back"
-            android:contentDescription="@string/dummy" />
+            style="@style/back" />
 
         <TextView
             android:id="@+id/header"

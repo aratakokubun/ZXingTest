@@ -88,7 +88,7 @@ public class ManageRequestCode {
 	 * make and throw amazon request code 
 	 * @return
 	 */
-	public static boolean throwHttpRequestCode(String itemid, String operation, String response_group)
+	public static int throwHttpRequestCode(String itemid, String operation, String response_group)
 	{
 		/*
 		 * Set up the signed requests helper
@@ -96,9 +96,11 @@ public class ManageRequestCode {
 		SignedRequestsHelper helper;
 		try {
 			helper = SignedRequestsHelper.getInstance(ENDPOINT, AWS_ACCESS_KEY_ID, AWS_SECRET_KEY);
+		} catch (IllegalArgumentException e){
+			return RESPONSE_CODE.NO_DATA;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return RESPONSE_CODE.WIFI_ERROR;
 		}
 
 		String requestUrl = null;
@@ -168,7 +170,7 @@ public class ManageRequestCode {
 	public static final String AMOUNT = "Amount";
 	public static final String CURRENCY = "CurrencyCode";
 	
-	public static boolean fetchBookData(String requestUrl, String isbn, String step2)
+	public static int fetchBookData(String requestUrl, String isbn, String step2)
 	{
 		String title = null;
 		String author = null;
@@ -183,7 +185,7 @@ public class ManageRequestCode {
 			Node titleNode = doc.getElementsByTagName(TITLE).item(0);
 			Node authorNode = doc.getElementsByTagName(AUTHOR).item(0);
 			Node labelNode = doc.getElementsByTagName(LABEL).item(0);
-			Node bindingNode = doc.getElementsByTagName(LABEL).item(0);
+			Node bindingNode = doc.getElementsByTagName(BINDING).item(0);
 			Node amountNode = doc.getElementsByTagName(AMOUNT).item(0);
 			Node currencyNode = doc.getElementsByTagName(CURRENCY).item(0);
 			
@@ -195,10 +197,10 @@ public class ManageRequestCode {
 			
 			if(D) Log.i(TAG, isbn + ", " + step2 + ", " + title + ", " + author + ", " + label + ", " + binding + ", " + price);
 			bookRow = new BookRow(isbn, step2, title, author, label, binding, price);
-			return true;
+			return RESPONSE_CODE.CORRECTLY_DECODED;
 		} catch (Exception e) {
 			//throw new RuntimeException(e);
-			return false;
+			return RESPONSE_CODE.DECODE_ERROR;
 		}
 	}
 }

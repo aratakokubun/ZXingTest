@@ -8,14 +8,19 @@ import jp.app.bookList.BookListActivity;
 import jp.app.bookList.BookRow;
 import jp.app.fileio.FileBookData;
 import jp.app.httppost.ManageRequestCode;
+import jp.app.httppost.NetworkConnection;
 import jp.app.httppost.OPERATION_CODE;
+import jp.app.httppost.RESPONSE_CODE;
 import jp.app.httppost.RESPONSE_GROUP_CODE;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SearchBookWeb extends ZXingTestActivity
@@ -34,6 +39,8 @@ public class SearchBookWeb extends ZXingTestActivity
 	
 	private String temp_isbn = null;
 	private String temp_step_2 = null;
+	
+	private Dialog dialog;
 	
 	/*---------------------------------------------------------------------------------------*/
     public void onCreate(Bundle savedInstanceState) {
@@ -117,17 +124,29 @@ public class SearchBookWeb extends ZXingTestActivity
 		if(temp_isbn!=null && temp_step_2!=null){
 			int jsonIndex = fileBookData.searchBookJsonIndex(temp_isbn);
 			if(jsonIndex < 0){
-				if(ManageRequestCode.throwHttpRequestCode
-						(temp_isbn, OPERATION_CODE.ITEM_LOOKUP, RESPONSE_GROUP_CODE.ITEMATTRIBUTES)){
-					//全ての本の詳細情報のデータをfileBookDataに渡し、BookListActivityを起動
-					fileBookData.putBookArray(ManageRequestCode.bookRow);
-					BookDetail.setBookDetailInfo(ManageRequestCode.bookRow);
-		        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_DETAIL);
-					Intent i = new Intent(this, BookListActivity.class);
-					startActivity(i);
-				} else {
-					//Toast.makeText(this, "Sorry. Can't get the return value. Please check the reception and retry later.", Toast.LENGTH_SHORT).show();
+				// Check if Network(ex wifi) is enabled
+				if(!NetworkConnection.isWifiConnected(this)){
 					Toast.makeText(this, R.string.access_error, Toast.LENGTH_SHORT).show();
+				} else {
+					int response = ManageRequestCode.throwHttpRequestCode
+							(temp_isbn, OPERATION_CODE.ITEM_LOOKUP, RESPONSE_GROUP_CODE.ITEMATTRIBUTES);
+					switch(response){
+					case RESPONSE_CODE.WIFI_ERROR:
+						Toast.makeText(this, R.string.access_error, Toast.LENGTH_SHORT).show();
+						break;
+					case RESPONSE_CODE.NO_DATA:
+					case RESPONSE_CODE.DECODE_ERROR:
+						Toast.makeText(this, R.string.get_error, Toast.LENGTH_SHORT).show();
+						break;
+					case RESPONSE_CODE.CORRECTLY_DECODED:
+						fileBookData.putBookArray(ManageRequestCode.bookRow);
+						BookDetail.setBookDetailInfo(ManageRequestCode.bookRow);
+			        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_DETAIL);
+						Intent i = new Intent(this, BookListActivity.class);
+						startActivity(i);
+						this.finish(); // Finish this activity
+						break;
+					}
 				}
 				releaseTempCode();
 				return true;
@@ -176,28 +195,41 @@ public class SearchBookWeb extends ZXingTestActivity
 	}
 	
 	/*---------------------------------------------------------------------------------------*/
-	/**
-	 * add menu to shift list or detail of the book
-	 */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.option_menu, menu);
-        return true;
-    }
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			showFinishAlert();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.set_engin:
-            return true;
-        case R.id.archive:
-        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_LIST);
-			Intent i = new Intent(this, BookListActivity.class);
-			startActivity(i);
-            return true;
-        }
-        return false;
-    }
-
+	private void showFinishAlert(){
+		showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
+		
+		final ImageView yes = (ImageView) dialog.findViewById(R.id.button_yes);
+		yes.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				finish();
+			}
+		});
+		
+		final ImageView no = (ImageView) dialog.findViewById(R.id.button_no);
+		no.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
+	
+	private void showDialog(View content) {
+		dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(content);
+		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		dialog.show();
+	}
 }

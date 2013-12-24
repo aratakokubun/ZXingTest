@@ -235,36 +235,48 @@ containing a value of this type.
         public static final int button_no_flat=0x7f020003;
         public static final int button_yes=0x7f020004;
         public static final int button_yes_flat=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int ic_menu_back=0x7f020007;
-        public static final int twitter_bluebird=0x7f020008;
-        public static final int twitter_bluebird2=0x7f020009;
+        public static final int camera=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int ic_menu_back=0x7f020008;
+        public static final int icon_camera=0x7f020009;
+        public static final int icon_list=0x7f02000a;
+        public static final int icon_note=0x7f02000b;
+        public static final int icon_settings=0x7f02000c;
+        public static final int icon_trash=0x7f02000d;
+        public static final int list1=0x7f02000e;
+        public static final int list2=0x7f02000f;
+        public static final int setting=0x7f020010;
+        public static final int twitter_bluebird=0x7f020011;
+        public static final int twitter_bluebird2=0x7f020012;
     }
     public static final class id {
-        public static final int adam=0x7f040029;
+        public static final int adam=0x7f04002a;
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
-        public static final int archive=0x7f040036;
+        public static final int archive=0x7f040039;
         public static final int author_box=0x7f04001a;
         public static final int author_value_box=0x7f04001b;
         public static final int binding_box=0x7f04001e;
         public static final int binding_value_box=0x7f04001f;
-        public static final int book_title=0x7f04002d;
+        public static final int book_title=0x7f04002e;
         public static final int bottom=0x7f040005;
         public static final int button_add=0x7f040019;
         public static final int button_back=0x7f040012;
         public static final int button_camera=0x7f040027;
         public static final int button_finish=0x7f040017;
-        public static final int button_no=0x7f040034;
+        public static final int button_list=0x7f040031;
+        public static final int button_no=0x7f040036;
+        public static final int button_rotate=0x7f040030;
+        public static final int button_setting=0x7f040028;
         public static final int button_tweet=0x7f040024;
-        public static final int button_yes=0x7f040033;
+        public static final int button_yes=0x7f040035;
         public static final int center=0x7f04000c;
         public static final int center_horizontal=0x7f04000a;
         public static final int center_vertical=0x7f040008;
-        public static final int center_view=0x7f040032;
+        public static final int center_view=0x7f040037;
         public static final int clip_horizontal=0x7f04000f;
         public static final int clip_vertical=0x7f04000e;
-        public static final int content=0x7f04002a;
+        public static final int content=0x7f04002b;
         public static final int end=0x7f040011;
         public static final int fill=0x7f04000d;
         public static final int fill_horizontal=0x7f04000b;
@@ -272,27 +284,27 @@ containing a value of this type.
         public static final int header=0x7f040013;
         public static final int horizontal=0x7f040000;
         public static final int image_tweet=0x7f040025;
-        public static final int jan_isbn=0x7f04002f;
-        public static final int jan_step2=0x7f040031;
+        public static final int jan_isbn=0x7f040032;
+        public static final int jan_step2=0x7f040034;
         public static final int label_box=0x7f04001c;
         public static final int label_value_box=0x7f04001d;
         public static final int left=0x7f040006;
-        public static final int list_book=0x7f040028;
-        public static final int margin=0x7f040030;
+        public static final int list_book=0x7f040029;
+        public static final int margin=0x7f040033;
         public static final int memo_text=0x7f040016;
         public static final int note_box=0x7f040022;
         public static final int note_edit_text=0x7f040018;
         public static final int note_value_box=0x7f040023;
-        public static final int preview_view=0x7f04002e;
+        public static final int preview_view=0x7f04002f;
         public static final int price_box=0x7f040020;
         public static final int price_value_box=0x7f040021;
-        public static final int read_barcode=0x7f040037;
-        public static final int register_time=0x7f04002c;
+        public static final int read_barcode=0x7f04003a;
+        public static final int register_time=0x7f04002d;
         public static final int right=0x7f040007;
-        public static final int set_engin=0x7f040035;
+        public static final int set_engin=0x7f040038;
         public static final int start=0x7f040010;
         public static final int text_tweet=0x7f040026;
-        public static final int title=0x7f04002b;
+        public static final int title=0x7f04002c;
         public static final int title_box=0x7f040014;
         public static final int title_value_box=0x7f040015;
         public static final int top=0x7f040004;
@@ -309,9 +321,11 @@ containing a value of this type.
         public static final int border_insert_value=0x7f030007;
         public static final int border_tweet=0x7f030008;
         public static final int camera_main=0x7f030009;
-        public static final int main=0x7f03000a;
-        public static final int title=0x7f03000b;
-        public static final int twitter_ouath=0x7f03000c;
+        public static final int camera_main_portrait=0x7f03000a;
+        public static final int finish_alert=0x7f03000b;
+        public static final int main=0x7f03000c;
+        public static final int title=0x7f03000d;
+        public static final int twitter_ouath=0x7f03000e;
     }
     public static final class menu {
         public static final int option_menu=0x7f090000;
@@ -319,61 +333,70 @@ containing a value of this type.
         public static final int option_menu_detail=0x7f090002;
     }
     public static final class string {
-        public static final int access_error=0x7f07001a;
+        public static final int access_error=0x7f07001e;
         /**  Amazonアクセスキー 
          */
         public static final int access_key=0x7f070001;
-        public static final int action_view_launch_failed=0x7f070015;
-        public static final int add_note_content=0x7f07000f;
+        public static final int action_view_launch_failed=0x7f070018;
+        public static final int add_note_content=0x7f070012;
         /**  book add note 
          */
-        public static final int add_note_header=0x7f07000e;
+        public static final int add_note_header=0x7f070011;
         /**  アプリケーション名 
          */
         public static final int app_name=0x7f070000;
-        public static final int author_box=0x7f070009;
-        public static final int binding_box=0x7f07000b;
+        public static final int author_box=0x7f07000c;
+        public static final int barcode_lower=0x7f070006;
+        /**  camera view 
+         */
+        public static final int barcode_upper=0x7f070005;
+        public static final int binding_box=0x7f07000e;
         /**  book detail 
          */
-        public static final int detail_header=0x7f070007;
+        public static final int detail_header=0x7f07000a;
         /**  xml 
  caution回避用のダミー 
          */
         public static final int dummy=0x7f070004;
-        public static final int label_box=0x7f07000a;
-        public static final int launch_camera=0x7f070018;
+        /**  修了ボタンを押した際のアラートメッセージ 
+         */
+        public static final int finish_alert=0x7f07001f;
+        public static final int get_error=0x7f07001d;
+        public static final int instruction_landscape=0x7f070007;
+        public static final int label_box=0x7f07000d;
+        public static final int launch_camera=0x7f07001b;
         /**  book list 
          */
-        public static final int list_header=0x7f070006;
-        public static final int note_box=0x7f07000d;
+        public static final int list_header=0x7f070009;
+        public static final int note_box=0x7f070010;
         /**  book list main 
          */
-        public static final int please_wait=0x7f070005;
-        public static final int price_box=0x7f07000c;
+        public static final int please_wait=0x7f070008;
+        public static final int price_box=0x7f07000f;
         /**  エラー時のメッセージ 
          */
-        public static final int read_error=0x7f070019;
+        public static final int read_error=0x7f07001c;
         /**  オプションメニュー 
          */
-        public static final int set_search_engin=0x7f070016;
-        public static final int start_oauth=0x7f070011;
-        public static final int title_box=0x7f070008;
+        public static final int set_search_engin=0x7f070019;
+        public static final int start_oauth=0x7f070014;
+        public static final int title_box=0x7f07000b;
         /**  ボタン 
          */
-        public static final int tweet=0x7f07001b;
+        public static final int tweet=0x7f070020;
         /**  <string name="twitter_callback_url">honrec://twitter</string> 
          */
-        public static final int twitter_callback_url=0x7f070012;
+        public static final int twitter_callback_url=0x7f070015;
         /**  Twitter API 
          */
         public static final int twitter_consumer_key=0x7f070002;
         public static final int twitter_consumer_secret=0x7f070003;
         /**  Twitter認証 
          */
-        public static final int twitter_oauth=0x7f070010;
-        public static final int twitter_ouath_failed=0x7f070014;
-        public static final int twitter_ouath_success=0x7f070013;
-        public static final int view_archive=0x7f070017;
+        public static final int twitter_oauth=0x7f070013;
+        public static final int twitter_ouath_failed=0x7f070017;
+        public static final int twitter_ouath_success=0x7f070016;
+        public static final int view_archive=0x7f07001a;
     }
     public static final class style {
         /** 
@@ -404,25 +427,29 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
-        public static final int add=0x7f080003;
-        public static final int back=0x7f080005;
-        public static final int camera=0x7f080006;
-        public static final int delete=0x7f080008;
-        public static final int detail_text_box=0x7f08000a;
-        public static final int detail_value_box=0x7f08000b;
-        public static final int frame_box=0x7f08000e;
-        public static final int frame_box_insert=0x7f080010;
-        public static final int frame_box_tweet=0x7f08000f;
+        public static final int add=0x7f080004;
+        public static final int back=0x7f080009;
+        public static final int camera=0x7f08000a;
+        public static final int delete=0x7f08000c;
+        public static final int detail_text_box=0x7f08000e;
+        public static final int detail_value_box=0x7f08000f;
+        public static final int frame_box=0x7f080012;
+        public static final int frame_box_insert=0x7f080014;
+        public static final int frame_box_tweet=0x7f080013;
         /**  book detail text view 
          */
-        public static final int header=0x7f080009;
-        public static final int note_text_box=0x7f08000c;
-        public static final int note_value_box=0x7f08000d;
-        public static final int post=0x7f080004;
+        public static final int header=0x7f08000d;
+        public static final int list=0x7f080008;
+        public static final int note=0x7f080007;
+        public static final int note_text_box=0x7f080010;
+        public static final int note_value_box=0x7f080011;
+        public static final int post=0x7f080005;
+        public static final int refresh=0x7f080003;
         /**  image button 
          */
-        public static final int refresh=0x7f080002;
-        public static final int tweet=0x7f080007;
+        public static final int rotate=0x7f080002;
+        public static final int setting=0x7f080006;
+        public static final int tweet=0x7f08000b;
     }
     public static final class styleable {
         /** Attributes that can be used with a GridLayout.

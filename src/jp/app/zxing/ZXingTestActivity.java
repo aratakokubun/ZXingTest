@@ -2,8 +2,11 @@ package jp.app.zxing;
 
 import java.io.IOException;
 
+import jp.app.bookList.BookListActivity;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.zxing.BinaryBitmap;
@@ -27,12 +31,16 @@ import com.google.zxing.common.HybridBinarizer;
 public class ZXingTestActivity extends Activity
     implements SurfaceHolder.Callback, Camera.PreviewCallback, Camera.AutoFocusCallback {
      
+	private static final boolean D = true;
     private static final String TAG = "ZXingTest";
      
     private static final int MIN_PREVIEW_PIXCELS = 320 * 240;
     private static final int MAX_PREVIEW_PIXCELS = 800 * 480;
     
     private static final boolean isReadDoubleOnce = true;
+    private boolean isActivityPortrait;
+    private ImageView list;
+    private ImageView rotate;
  
     private Camera myCamera;
     private SurfaceView surfaceView;
@@ -55,10 +63,49 @@ public class ZXingTestActivity extends Activity
         hasSurface = false;
         initialized = false;
         
-        //setContentView(R.layout.main);
+        isActivityPortrait = false;
         setContentView(R.layout.camera_main);
+        
+        list = (ImageView) findViewById(R.id.button_list);
+        list.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				moveToList();
+			}
+		});
+        
+        // TODO
+        // カメラ自体の切り替えも必要なので，要検討
+        /*
+        rotate = (ImageView) findViewById(R.id.button_rotate);
+        rotate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				rotateView();
+			}
+		});
+		*/
     }
-     
+    
+    // Move to book list activity
+    protected void moveToList(){
+    	BookListActivity.setLaunchActivity(BookListActivity.BOOK_LIST);
+		Intent i = new Intent(this, BookListActivity.class);
+		startActivity(i);
+		this.finish();
+    }
+
+    // Switch view between portrait and landscape mode
+    protected void rotateView(){
+    	if(isActivityPortrait){
+    		setContentView(R.layout.camera_main);
+    		isActivityPortrait = false;
+    	} else {
+    		setContentView(R.layout.camera_main_portrait);
+    		isActivityPortrait = true;
+    	}
+    }
+    
     @Override
     protected void onResume() {
         super.onResume();
@@ -90,6 +137,8 @@ public class ZXingTestActivity extends Activity
             hasSurface = true;
             initCamera(holder);
         }
+        // Show instruction toast
+        Toast.makeText(this, R.string.instruction_landscape, Toast.LENGTH_SHORT).show();
     }
  
     @Override
@@ -188,7 +237,6 @@ public class ZXingTestActivity extends Activity
                 Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
                 searchResultWeb(result.getText().toString().trim());
             } catch (NotFoundException e) {
-                //Toast.makeText(this, "error: " + e.getMessage(), Toast.LENGTH_LONG).show();
             	Toast.makeText(this, R.string.read_error, Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -266,16 +314,25 @@ public class ZXingTestActivity extends Activity
         int width = display.getWidth();
         int height = display.getHeight();
          
+        boolean isSwap = false;
         if (width < height) {
             int tmp = width;
             width = height;
             height = tmp;
+            isSwap = true;
         }
          
         screenPoint = new Point(width, height);
-        Log.d(TAG, "screenPoint = " + screenPoint);
+        if(D) Log.d(TAG, "screenPoint = " + screenPoint);
         previewPoint = findPreviewPoint(parameters, screenPoint, false);
-        Log.d(TAG, "previewPoint = " + previewPoint);
+        if(D) Log.d(TAG, "previewPoint = " + previewPoint);
+        
+        /*
+         * For portrait mode
+        if(isSwap){
+            camera.setDisplayOrientation(90);
+        }
+        */
     }
      
     /**

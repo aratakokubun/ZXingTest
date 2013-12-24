@@ -8,11 +8,23 @@
         android:id="@+id/preview_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
-     
-    <RelativeLayout
+    
+    <ImageView
+        android:id="@+id/button_rotate"
+        style="@style/rotate"
+        android:layout_gravity="left"
+        android:contentDescription="@string/dummy" />
+    
+    <ImageView
+        android:id="@+id/button_list"
+        style="@style/list"
+        android:layout_gravity="right"
+        android:contentDescription="@string/dummy" />
+    
+	<RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingTop="10dip" >
+        android:gravity="center_vertical" >
          
         <View
             android:id="@+id/jan_isbn"
@@ -20,6 +32,14 @@
             android:layout_height="150dip"
             android:layout_centerHorizontal="true"
             android:background="@color/reader_back" />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/jan_isbn"
+            android:layout_alignTop="@id/jan_isbn"
+            android:text="@string/barcode_upper"
+            android:textColor="@color/text_dark_gray" />
         
         <View
             android:id="@+id/margin"
@@ -36,7 +56,15 @@
             android:layout_below="@id/margin"
             android:layout_centerHorizontal="true"
             android:background="@color/reader_back" />
-         
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/jan_step2"
+            android:layout_alignTop="@id/jan_step2"
+            android:text="@string/barcode_lower"
+            android:textColor="@color/text_dark_gray" />
+        
     </RelativeLayout>
      
 </FrameLayout>
