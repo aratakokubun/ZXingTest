@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+@Deprecated
 public class BookList extends LayoutView {
 	private static ImageView camera;
 	private static ImageView setting;

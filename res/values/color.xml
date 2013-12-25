@@ -21,8 +21,9 @@
     <color name="comment_gray_back">#edeff4</color>
 	<color name="tab_gray_back">#d8dfea</color>
 	<color name="grid_gray">#b3b3b3</color>
-	<color name="menu_gray_back">#808080</color>
-	<color name="menu_gray_list">#a0a0a0</color>
-	<color name="menu_gray_search">#606060</color>
+	<color name="menu_gray_text">#808080</color>
+	<color name="menu_gray_back">#303038</color>
+	<color name="menu_gray_list">#404048</color>
+	<color name="menu_gray_search">#202020</color>
     
 </resources>

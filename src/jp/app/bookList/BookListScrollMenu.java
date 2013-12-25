@@ -1,7 +1,5 @@
 package jp.app.bookList;
 
-import grimbo.android.demo.slidingmenu.ViewUtils;
-
 import java.util.ArrayList;
 
 import jp.app.fileio.J;
@@ -12,18 +10,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class BookListScrollMenu extends ScrollLayoutView {
-	private static final boolean IS_MENU_LEFT = true;
-	
+	private TextView header;
 	private ImageView camera;
 	private ImageView setting;
-	private ListView book;
-	private ArrayList<BookRow> list;
+	private ListView bookListView;
+	private ListView settingsListView;
+	private ArrayList<BookRow> bookList;
+	private ArrayList<Settings> settingsList;
 	private BookListRowAdapter adapter;
+	private SettingsAdapter settingsAdapter;
 	
 	public BookListScrollMenu(BookListActivity bookListActivity) {
 		super(bookListActivity);
@@ -34,13 +36,24 @@ public class BookListScrollMenu extends ScrollLayoutView {
 		super.initScrollView(scrollViewId, menuId, appId);
 		prepared = false;
 		
+		// Header
+		header = (TextView) app.findViewById(R.id.header);
+		header.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				liftAdapterDeleteMode();
+			}
+		});
+		
 		// Camera button
 		camera  = (ImageView) app.findViewById(R.id.button_camera);
 		camera.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Finish this activity and move to camera mode
-				activity.moveToCamera();
+				if(!liftAdapterDeleteMode()){
+					// Finish this activity and move to camera mode
+					activity.moveToCamera();
+				}
 			}
 		});
 
@@ -49,54 +62,81 @@ public class BookListScrollMenu extends ScrollLayoutView {
 		setting.setOnClickListener(new ClickListenerForScrolling(scrollView, menu));
 
 		// Book List
-		list = new ArrayList<BookRow>();
-		book = (ListView) app.findViewById(R.id.list_book);
-		adapter = new BookListRowAdapter(activity, R.layout.book_list_row, list, BookListRowAdapter.NORMAL);
-		book.setAdapter(adapter);
-		book.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		bookList = new ArrayList<BookRow>();
+		bookListView = (ListView) app.findViewById(R.id.list_book);
+		adapter = new BookListRowAdapter(activity, R.layout.book_list_row, bookList, BookListRowAdapter.NORMAL);
+		bookListView.setAdapter(adapter);
+		bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				ListView parentList = (ListView) parent;
-				BookRow item = (BookRow) parentList.getItemAtPosition(position);
-				BookDetail.setBookDetailInfo(item);
-				activity.requestPrepare(BookListActivity.BOOK_DETAIL);
-				activity.changeView(BookListActivity.BOOK_DETAIL);
+				if(!liftAdapterDeleteMode()){
+					ListView parentList = (ListView) parent;
+					BookRow item = (BookRow) parentList.getItemAtPosition(position);
+					BookDetail.setBookDetailInfo(item);
+					activity.requestPrepare(BookListActivity.BOOK_DETAIL);
+					activity.changeView(BookListActivity.BOOK_DETAIL);
+				}
 			}
 		});
 		
-		// TODO
 		// Menu List
-		ListView listView = (ListView) menu.findViewById(R.id.list);
-		ViewUtils.initListView(activity, listView, "Menu", 30, android.R.layout.simple_list_item_1);
+		settingsList = new ArrayList<Settings>();
+		settingsListView = (ListView) menu.findViewById(R.id.list_settings);
+		settingsAdapter = new SettingsAdapter(activity, R.layout.book_list_menu_row, settingsList);
+		settingsListView.setAdapter(settingsAdapter);
+		settingsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				ListView parentList = (ListView) parent;
+				Settings item = (Settings) parentList.getItemAtPosition(position);
+				onSettingsClicked(item.getMode());
+			}
+		});
 		
-		final View[] children = new View[] {app, menu};
+		final View[] children = new View[] {menu, app};
 		
-		// Scroll to app (view[0]) when layout finished.
-		int scrollToViewIdx = 0;
+		// Scroll to app (view[1]) when layout finished.
+		int scrollToViewIdx = 1;
 		scrollView.initViews(children, scrollToViewIdx, new SizeCallbackForMenu(setting));
 	}
 	
 	@Override
-	public void startView(){}
+	public void startView(){
+	}
 	
 	@Override
 	public boolean prepareView(){
 		if(!prepared) {
-			list.clear();
 			setBookList();
+			setMenuList();
 		}
 		return prepared;
 	}
 	
 	//--------------------------------------------------------------------------------------------
+	private boolean liftAdapterDeleteMode(){
+		// If in delete mode, lift it
+		int mode = adapter.getMode();
+		if(mode == BookListRowAdapter.DELETE){
+			adapter.changeMode();
+			setBookList();
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	//--------------------------------------------------------------------------------------------
 	private void setBookList(){
+		bookList.clear();
+		
 		int index = 0;
 		try{
 			JSONArray ja = activity.fileBookData.getBookJsonArray();
 			while(true){
 				if(ja.opt(index) != null){
 					JSONObject next = ja.getJSONObject(index);
-					list.add(new BookRow(
+					bookList.add(new BookRow(
 							next.getString(J.ISBN),
 							next.getString(J.STEP_2),
 							next.getString(J.TITLE),
@@ -114,7 +154,7 @@ public class BookListScrollMenu extends ScrollLayoutView {
 					break;
 				}
 			}
-			book.setScrollingCacheEnabled(false); 
+			bookListView.setScrollingCacheEnabled(false); 
 			prepared = true;
 		} catch (JSONException e) {
 		    e.printStackTrace();
@@ -123,4 +163,34 @@ public class BookListScrollMenu extends ScrollLayoutView {
 		adapter.notifyDataSetChanged();
 	}
 	
+	private void setMenuList(){
+		settingsList.clear();
+		
+		settingsList.add(new Settings(Settings.LAUNCH_CAMERA, 	activity.getString(R.string.settings_launch_camera), 	R.drawable.icon_camera));
+		settingsList.add(new Settings(Settings.MANUAL_ADD, 	  	activity.getString(R.string.settings_manual_add), 		R.drawable.icon_note));
+		settingsList.add(new Settings(Settings.DELETE, 			activity.getString(R.string.settings_delete), 			R.drawable.icon_trash));
+		settingsList.add(new Settings(Settings.SEARCH, 			activity.getString(R.string.settings_search), 			R.drawable.icon_search));
+		settingsListView.setScrollingCacheEnabled(false);
+		settingsAdapter.notifyDataSetChanged();
+	}
+	
+	//--------------------------------------------------------------------------------------------
+	private void onSettingsClicked(int id){
+		switch(id){
+		case Settings.LAUNCH_CAMERA:
+			activity.moveToCamera();
+			break;
+		case Settings.MANUAL_ADD:
+			// TODO
+			break;
+		case Settings.DELETE:
+			adapter.changeMode();
+			setBookList();
+			setting.performClick();
+			break;
+		case Settings.SEARCH:
+			// TODO
+			break;
+		}
+	}
 }

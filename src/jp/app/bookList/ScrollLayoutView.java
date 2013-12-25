@@ -2,7 +2,6 @@ package jp.app.bookList;
 
 import grimbo.android.demo.slidingmenu.MyHorizontalScrollView;
 import grimbo.android.demo.slidingmenu.MyHorizontalScrollView.SizeCallback;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;

@@ -12,7 +12,7 @@
         android:id="@+id/register_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummy"
+        android:text="@string/temp"
         android:textColor="@color/text_black"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:text="@string/dummy"
+        android:text="@string/temp"
         android:textColor="@color/text_dark_gray"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

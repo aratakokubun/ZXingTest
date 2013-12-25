@@ -10,11 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class BookListActivity extends Activity
 {
@@ -122,7 +124,7 @@ public class BookListActivity extends Activity
 		// lv[BOOK_LIST] = new BookList(this);
 		// lv[BOOK_LIST].initView(R.layout.book_list);
 		lv[BOOK_LIST] = new BookListScrollMenu(this);
-		lv[BOOK_LIST].initScrollView(R.layout.horz_scroll_with_list_menu, R.layout.horz_scroll_menu, R.layout.book_list);
+		lv[BOOK_LIST].initScrollView(R.layout.horz_scroll_with_list_menu, R.layout.book_list_menu, R.layout.book_list);
 		lv[BOOK_DETAIL] = new BookDetail(this);
 		lv[BOOK_DETAIL].initView(R.layout.book_detail);
 		lv[BOOK_ADD_NOTE] = new BookAddNote(this);
@@ -134,7 +136,10 @@ public class BookListActivity extends Activity
 		if(lv[id].prepareView()) {
 			lv[viewId].endView();
 			content.removeAllViews();
-			content.addView(lv[id].view); //TODO ここでScrollLayoutViewではエラーが出るかも
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+			        ViewGroup.LayoutParams.MATCH_PARENT,
+			        ViewGroup.LayoutParams.MATCH_PARENT); 
+			content.addView(lv[id].view, params); //TODO ここでScrollLayoutViewではエラーが出るかも
 			content.setVisibility(View.VISIBLE);
 			title.setVisibility(View.INVISIBLE);
 			lv[id].startView();

@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/adam"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/blue_theme" >
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/content"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:visibility="invisible" >
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:background="@color/menu_gray_back" >
+        
+        <TextView
+            style="@style/header"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="20sp"
+            android:textColor="@color/menu_gray_text"
+            android:text="@string/menu_header" />
+        
     </LinearLayout>
+        
+    
+    <ListView
+        android:id="@+id/list_settings"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/menu_gray_list" >
+    </ListView>
 
-    <include
-        android:id="@+id/title"
-        layout="@layout/title" />
-
-</FrameLayout>
+</LinearLayout>

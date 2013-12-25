@@ -22,6 +22,12 @@
 	<!-- book list -->
 	<string name="list_header">本のリスト</string>
 	<string name="delete">削除</string>
+	<!-- bool list menu -->
+	<string name="menu_header">リストの編集</string>
+	<string name="settings_launch_camera">カメラを起動</string>
+	<string name="settings_manual_add">本を入力で追加</string>
+	<string name="settings_delete">本を削除</string>
+	<string name="settings_search">本を検索</string>
 	<!-- book detail -->
 	<string name="detail_header">本の詳細情報</string>
 	<string name="title_box">タイトル</string>
