@@ -9,12 +9,12 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:background="@color/blue_theme" >
-
+        
         <ImageView
-            android:id="@+id/button_camera"
-            style="@style/camera"
+            android:id="@+id/button_setting"
+            style="@style/setting"
         	android:contentDescription="@string/dummy" />
-
+        
         <TextView
             android:id="@+id/header"
             style="@style/header"
@@ -22,8 +22,8 @@
             android:text="@string/list_header" />
 
         <ImageView
-            android:id="@+id/button_setting"
-            style="@style/setting"
+            android:id="@+id/button_camera"
+            style="@style/camera"
         	android:contentDescription="@string/dummy" />
     </LinearLayout>
 

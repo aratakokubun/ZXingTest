@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -25,7 +24,7 @@ public class BookListActivity extends Activity
 	public static final int VIEW_LENGTH = 3;
 	
 	private static final LayoutView[] lv = new LayoutView[VIEW_LENGTH];
-	private static int viewId = BOOK_LIST;
+	private static int viewId;
 	private static int launchViewId;
 
 	private static LinearLayout	title;
@@ -120,8 +119,10 @@ public class BookListActivity extends Activity
 
 	/*---------------------------------------------------------------------------------------*/
 	private void initAllView() {
-		lv[BOOK_LIST] = new BookList(this);
-		lv[BOOK_LIST].initView(R.layout.book_list);
+		// lv[BOOK_LIST] = new BookList(this);
+		// lv[BOOK_LIST].initView(R.layout.book_list);
+		lv[BOOK_LIST] = new BookListScrollMenu(this);
+		lv[BOOK_LIST].initScrollView(R.layout.horz_scroll_with_list_menu, R.layout.horz_scroll_menu, R.layout.book_list);
 		lv[BOOK_DETAIL] = new BookDetail(this);
 		lv[BOOK_DETAIL].initView(R.layout.book_detail);
 		lv[BOOK_ADD_NOTE] = new BookAddNote(this);
@@ -133,7 +134,7 @@ public class BookListActivity extends Activity
 		if(lv[id].prepareView()) {
 			lv[viewId].endView();
 			content.removeAllViews();
-			content.addView(lv[id].view);
+			content.addView(lv[id].view); //TODO ここでScrollLayoutViewではエラーが出るかも
 			content.setVisibility(View.VISIBLE);
 			title.setVisibility(View.INVISIBLE);
 			lv[id].startView();
@@ -174,7 +175,7 @@ public class BookListActivity extends Activity
 	}
 
 	/*---------------------------------------------------------------------------------------*/
-	// Back to camera activity
+	// Move to camera activity
 	public void moveToCamera(){
 		Intent i = new Intent(this, SearchBookWeb.class);
 		startActivity(i);

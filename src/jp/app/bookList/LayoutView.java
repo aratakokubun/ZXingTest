@@ -24,6 +24,15 @@ public abstract class LayoutView {
 	}
 	
 	/**
+	 * アプリ起動時に呼ばれます．
+	 * xmlファイルからScroll可能なビューを生成します．
+	 * ボタンのクリックリスナー，スクロールビューの登録を行います．
+	 */
+	protected void initScrollView(int scrollViewId, int menuId, int appId){
+		// ScrollLayoutViewで処理を記述．一括登録したLayoutViewでactivityから呼び出すためにここにメソッド登録してある．
+	}
+	
+	/**
 	 * ビューの表示準備をします。通信などを開始しましょう。
 	 * 特に準備することがない場合はtrueを返します。
 	 */

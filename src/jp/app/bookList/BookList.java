@@ -56,7 +56,7 @@ public class BookList extends LayoutView {
 		// List view
 		list = new ArrayList<BookRow>();
 		book = (ListView)view.findViewById(R.id.list_book);
-		adapter = new BookListRowAdapter(activity, R.layout.book_list_row, list);
+		adapter = new BookListRowAdapter(activity, R.layout.book_list_row, list, BookListRowAdapter.NORMAL);
 		book.setAdapter(adapter);
 		book.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override

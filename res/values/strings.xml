@@ -12,6 +12,7 @@
 	<!-- xml -->
 	<!-- caution回避用のダミー -->
 	<string name="dummy"></string>
+	<string name="temp">temp string</string>
 	<!-- camera view -->
 	<string name="barcode_upper">バーコード(上)</string>
 	<string name="barcode_lower">バーコード(下)</string>
@@ -20,6 +21,7 @@
 	<string name="please_wait">Please Wait</string>
 	<!-- book list -->
 	<string name="list_header">本のリスト</string>
+	<string name="delete">削除</string>
 	<!-- book detail -->
 	<string name="detail_header">本の詳細情報</string>
 	<string name="title_box">タイトル</string>
