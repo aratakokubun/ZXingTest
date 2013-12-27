@@ -33,17 +33,17 @@ public class ScrollLayoutView extends LayoutView {
     static class ClickListenerForScrolling implements OnClickListener {
         HorizontalScrollView scrollView;
         View menu, app;
+        int menuIdx;
         /**
          * Menu must NOT be out/shown to start with.
          */
         boolean menuOut = false;
 
-        // TODO
-        // 右からにするときはしっかり各viewの幅を決めないとうまくいかない可能性が高い
-        public ClickListenerForScrolling(HorizontalScrollView scrollView, View menu) {
+        public ClickListenerForScrolling(HorizontalScrollView scrollView, View menu, int menuIdx) {
             super();
             this.scrollView = scrollView;
             this.menu = menu;
+            this.menuIdx = menuIdx;
         }
 
         @Override
@@ -56,12 +56,12 @@ public class ScrollLayoutView extends LayoutView {
             menu.setVisibility(View.VISIBLE);
 
             if (!menuOut) {
-            	// Scroll to 0 to reveal menu
-            	int left = 0;
+            	// Scroll to menuWidth*menuIdx to reveal menu
+            	int left = menuWidth*menuIdx;
             	scrollView.smoothScrollTo(left, 0);
             } else {
-            	// Scroll to menuWidth so menu isn't on screen.
-            	int left = menuWidth;
+            	// Scroll to menuWidth*(1-menuIdx) so menu isn't on screen.
+            	int left = menuWidth*(1-menuIdx);
             	scrollView.smoothScrollTo(left, 0);
             }
             menuOut = !menuOut;
@@ -72,25 +72,27 @@ public class ScrollLayoutView extends LayoutView {
      * Helper that remembers the width of the 'slide' button, so that the 'slide' button remains in view, even when the menu is
      * showing.
      */
+    private static final int LEFT_MARGIN = 18;
     static class SizeCallbackForMenu implements SizeCallback {
         int btnWidth;
         View btnSlide;
+        int menuIdx = 0;
 
-        public SizeCallbackForMenu(View btnSlide) {
+        public SizeCallbackForMenu(View btnSlide, int menuIdx) {
             super();
             this.btnSlide = btnSlide;
+            this.menuIdx = menuIdx;
         }
 
         @Override
         public void onGlobalLayout() {
-            btnWidth = btnSlide.getMeasuredWidth();
+            btnWidth = btnSlide.getMeasuredWidth() + LEFT_MARGIN;
         }
 
         @Override
         public void getViewSize(int idx, int w, int h, int[] dims) {
             dims[0] = w;
             dims[1] = h;
-            final int menuIdx = 0;
             if (idx == menuIdx) {
                 dims[0] = w - btnWidth;
             }

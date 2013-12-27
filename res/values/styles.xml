@@ -14,7 +14,8 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+		<item name="android:background">@color/white_back</item>  
+        <item name="android:textColor">@color/text_dark_gray</item>
     </style>
 
     <!-- image button -->

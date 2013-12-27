@@ -285,13 +285,13 @@ containing a value of this type.
         public static final int bottom=0x7f050005;
         public static final int button_add=0x7f050019;
         public static final int button_back=0x7f050012;
-        public static final int button_camera=0x7f050028;
+        public static final int button_camera=0x7f050027;
         public static final int button_delete=0x7f050032;
         public static final int button_finish=0x7f050017;
         public static final int button_list=0x7f050035;
         public static final int button_no=0x7f05003a;
         public static final int button_rotate=0x7f050034;
-        public static final int button_setting=0x7f050027;
+        public static final int button_setting=0x7f050028;
         public static final int button_tweet=0x7f050024;
         public static final int button_yes=0x7f050039;
         public static final int center=0x7f05000c;
@@ -470,7 +470,6 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
         public static final int add=0x7f090004;

@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class BookDetail extends LayoutView {
-	private static final String SHOW_OUATH = "ツイッターの認証";
-	
 	private static TextView title;
 	private static TextView author;
 	private static TextView label;
@@ -108,30 +106,6 @@ public class BookDetail extends LayoutView {
 	public static void setBookDetailInfo(BookRow item)
 	{
 		bookRow = item;
-	}
-	
-	//--------------------------------------------------------------------------------------------
-	private void showDialogTwitterOuath()
-	{
-		showDialog(SHOW_OUATH, activity.getLayoutInflater().inflate(R.layout.twitter_ouath, null));
-
-		final ImageView button_yes = (ImageView) dialog.findViewById(R.id.button_yes);
-		button_yes.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// 認証が終わったら投稿画面に移動
-				
-				dialog.dismiss();
-			}
-		});
-		final ImageView button_no = (ImageView) dialog.findViewById(R.id.button_no);
-		button_no.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				dialog.dismiss();
-			}
-		});
 	}
 	
 	private void launchTwitterOuath()

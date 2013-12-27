@@ -36,6 +36,8 @@ public class BookListActivity extends Activity
 	
 	private Dialog dialog;
 	
+	private static boolean requestFinishActivityFromCamera = false;
+	
 	/*---------------------------------------------------------------------------------------*/
 	/** Called when the activity is first created. */
 	@Override
@@ -56,10 +58,29 @@ public class BookListActivity extends Activity
 			changeView(launchViewId);
 		}
 	}
+	
+	@Override
+	protected void onResume(){
+		super.onResume();
+		if(requestFinishActivityFromCamera){
+			requestFinishActivityFromCamera = false;
+			this.finish();
+		} else {
+			try{
+				if(launchViewId != viewId){
+					changeView(launchViewId);
+				} else {
+					lv[viewId].startView();
+				}
+			} catch (Exception e) {
+			}
+		}
+	}
 
 	@Override
 	protected void onDestroy() {
-		//TODO
+		// TODO
+		// 終了時にファイルの保存等を行う
 		super.onDestroy();
 	}
 
@@ -121,8 +142,6 @@ public class BookListActivity extends Activity
 
 	/*---------------------------------------------------------------------------------------*/
 	private void initAllView() {
-		// lv[BOOK_LIST] = new BookList(this);
-		// lv[BOOK_LIST].initView(R.layout.book_list);
 		lv[BOOK_LIST] = new BookListScrollMenu(this);
 		lv[BOOK_LIST].initScrollView(R.layout.horz_scroll_with_list_menu, R.layout.book_list_menu, R.layout.book_list);
 		lv[BOOK_DETAIL] = new BookDetail(this);
@@ -139,11 +158,12 @@ public class BookListActivity extends Activity
 			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 			        ViewGroup.LayoutParams.MATCH_PARENT,
 			        ViewGroup.LayoutParams.MATCH_PARENT); 
-			content.addView(lv[id].view, params); //TODO ここでScrollLayoutViewではエラーが出るかも
+			content.addView(lv[id].view, params);
 			content.setVisibility(View.VISIBLE);
 			title.setVisibility(View.INVISIBLE);
 			lv[id].startView();
 			viewId = id;
+			launchViewId = id;
 		}
 	}
 	
@@ -184,6 +204,9 @@ public class BookListActivity extends Activity
 	public void moveToCamera(){
 		Intent i = new Intent(this, SearchBookWeb.class);
 		startActivity(i);
-		this.finish();
+	}
+	
+	public static void requestFinishActivity(){
+		requestFinishActivityFromCamera = true;
 	}
 }

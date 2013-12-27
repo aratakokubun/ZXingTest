@@ -9,6 +9,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -17,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class BookListScrollMenu extends ScrollLayoutView {
+	private static final int MENU_IDX = 1;
+	
 	private TextView header;
 	private ImageView camera;
 	private ImageView setting;
@@ -59,7 +64,7 @@ public class BookListScrollMenu extends ScrollLayoutView {
 
 		// Setting button (scroll menu)
 		setting = (ImageView) app.findViewById(R.id.button_setting);
-		setting.setOnClickListener(new ClickListenerForScrolling(scrollView, menu));
+		setting.setOnClickListener(new ClickListenerForScrolling(scrollView, menu, MENU_IDX));
 
 		// Book List
 		bookList = new ArrayList<BookRow>();
@@ -93,16 +98,30 @@ public class BookListScrollMenu extends ScrollLayoutView {
 			}
 		});
 		
-		final View[] children = new View[] {menu, app};
+		final View[] children = new View[] {app, menu};
 		
-		// Scroll to app (view[1]) when layout finished.
-		int scrollToViewIdx = 1;
-		scrollView.initViews(children, scrollToViewIdx, new SizeCallbackForMenu(setting));
+		// Scroll to app (view[0]) when layout finished.
+		int scrollToViewIdx = 0;
+		scrollView.initViews(children, scrollToViewIdx, new SizeCallbackForMenu(setting, MENU_IDX));
 	}
 	
 	@Override
 	public void startView(){
+		mHandler.sendEmptyMessageDelayed(REQUEST_INIT_SCROLL, REQUEST_SLEEP);
 	}
+	
+	private static final int REQUEST_INIT_SCROLL = 0;
+	private static final long REQUEST_SLEEP = 200;
+	@SuppressLint("HandlerLeak")
+	final Handler mHandler = new Handler(){
+		@Override
+		public void dispatchMessage(Message msg){
+			if(msg.what == REQUEST_INIT_SCROLL){
+				// startView の後にscrollするメソッドが呼ばれており，その場所が不明のため，ここで時間遅れで再度scroll位置を戻している
+				scrollView.scrollTo(0, 0);
+			}
+		}
+	};
 	
 	@Override
 	public boolean prepareView(){

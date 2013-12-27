@@ -1,10 +1,8 @@
 package jp.app.bookList;
 
 import jp.app.zxing.R;
-import android.app.Dialog;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ public class BookAddNote extends LayoutView {
 	private static EditText note;
 	
 	private static BookRow bookRow;
-	private static Dialog dialog;
 
 	public BookAddNote(BookListActivity bookListActivity) {
 		super(bookListActivity);

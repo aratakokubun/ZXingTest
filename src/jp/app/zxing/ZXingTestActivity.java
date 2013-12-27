@@ -3,10 +3,8 @@ package jp.app.zxing;
 import java.io.IOException;
 
 import jp.app.bookList.BookListActivity;
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -40,7 +38,7 @@ public class ZXingTestActivity extends Activity
     private static final boolean isReadDoubleOnce = true;
     private boolean isActivityPortrait;
     private ImageView list;
-    private ImageView rotate;
+    // private ImageView rotate;
  
     private Camera myCamera;
     private SurfaceView surfaceView;
@@ -70,7 +68,7 @@ public class ZXingTestActivity extends Activity
         list.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				moveToList();
+				moveToList(BookListActivity.BOOK_LIST);
 			}
 		});
         
@@ -88,10 +86,9 @@ public class ZXingTestActivity extends Activity
     }
     
     // Move to book list activity
-    protected void moveToList(){
-    	BookListActivity.setLaunchActivity(BookListActivity.BOOK_LIST);
-		Intent i = new Intent(this, BookListActivity.class);
-		startActivity(i);
+    protected void moveToList(int id){
+    	closeCamera();
+    	BookListActivity.setLaunchActivity(id);
 		this.finish();
     }
 
@@ -106,7 +103,8 @@ public class ZXingTestActivity extends Activity
     	}
     }
     
-    @Override
+	@SuppressWarnings("deprecation")
+	@Override
     protected void onResume() {
         super.onResume();
          
@@ -307,32 +305,24 @@ public class ZXingTestActivity extends Activity
      * カメラのプレビューサイズ・画面サイズを設定
      * @param camera
      */
-    private void initFromCameraParameters(Camera camera) {
+    @SuppressWarnings("deprecation")
+	private void initFromCameraParameters(Camera camera) {
         Camera.Parameters parameters = camera.getParameters();
         WindowManager manager = (WindowManager)getApplication().getSystemService(Context.WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
         int width = display.getWidth();
         int height = display.getHeight();
-         
-        boolean isSwap = false;
+
         if (width < height) {
             int tmp = width;
             width = height;
             height = tmp;
-            isSwap = true;
         }
          
         screenPoint = new Point(width, height);
         if(D) Log.d(TAG, "screenPoint = " + screenPoint);
         previewPoint = findPreviewPoint(parameters, screenPoint, false);
         if(D) Log.d(TAG, "previewPoint = " + previewPoint);
-        
-        /*
-         * For portrait mode
-        if(isSwap){
-            camera.setDisplayOrientation(90);
-        }
-        */
     }
      
     /**

@@ -16,6 +16,7 @@
     <application
         android:icon="@drawable/twitter_bluebird2"
         android:label="@string/app_name"
+        style="@style/AppTheme"
         android:allowBackup="true" >
 
         <!-- android:launchMode="singleInstance" -->

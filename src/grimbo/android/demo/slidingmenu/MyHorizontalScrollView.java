@@ -101,7 +101,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView {
     class MyOnGlobalLayoutListener implements OnGlobalLayoutListener {
         ViewGroup parent;
         View[] children;
-        int scrollToViewIdx;
+        int scrollToViewIdx = 0;
         int scrollToViewPos = 0;
         SizeCallback sizeCallback;
 
@@ -162,6 +162,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView {
                 @Override
                 public void run() {
                     me.scrollBy(scrollToViewPos, 0);
+                    me.scrollTo(scrollToViewPos, 0);
                 }
             });
         }

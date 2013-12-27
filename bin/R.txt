@@ -72,13 +72,13 @@ int id book_title 0x7f050031
 int id bottom 0x7f050005
 int id button_add 0x7f050019
 int id button_back 0x7f050012
-int id button_camera 0x7f050028
+int id button_camera 0x7f050027
 int id button_delete 0x7f050032
 int id button_finish 0x7f050017
 int id button_list 0x7f050035
 int id button_no 0x7f05003a
 int id button_rotate 0x7f050034
-int id button_setting 0x7f050027
+int id button_setting 0x7f050028
 int id button_tweet 0x7f050024
 int id button_yes 0x7f050039
 int id center 0x7f05000c

@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 public class SearchBookWeb extends ZXingTestActivity
 {
+	private static boolean D = false;
 	private static final String TAG = "SearchBookWeb";
 	
 	private static final int JAN_ISBN = 978;
@@ -56,7 +57,7 @@ public class SearchBookWeb extends ZXingTestActivity
 		int flag = Integer.parseInt(result.substring(0, 3));//上3ケタのフラグコード
 		switch(flag) {
 		case JAN_ISBN:
-			Log.e(TAG, "isbn");
+			if(D) Log.e(TAG, "isbn");
 			switch(len) {
 			case ISBN_10:
 				decodeISBN_10(result);
@@ -69,7 +70,7 @@ public class SearchBookWeb extends ZXingTestActivity
 			
 		case JAN_STEP2_OLD:
 		case JAN_STEP2_NEW:
-			Log.e(TAG, "step2");
+			if(D) Log.e(TAG, "isbn");
 			decodeJanStep2(result);
 			break;
 			
@@ -141,10 +142,7 @@ public class SearchBookWeb extends ZXingTestActivity
 					case RESPONSE_CODE.CORRECTLY_DECODED:
 						fileBookData.putBookArray(ManageRequestCode.bookRow);
 						BookDetail.setBookDetailInfo(ManageRequestCode.bookRow);
-			        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_DETAIL);
-						Intent i = new Intent(this, BookListActivity.class);
-						startActivity(i);
-						this.finish(); // Finish this activity
+						moveToList(BookListActivity.BOOK_DETAIL);
 						break;
 					}
 				}
@@ -156,8 +154,7 @@ public class SearchBookWeb extends ZXingTestActivity
 				if(book != null){
 					BookDetail.setBookDetailInfo(book);
 		        	BookListActivity.setLaunchActivity(BookListActivity.BOOK_DETAIL);
-					Intent i = new Intent(this, BookListActivity.class);
-					startActivity(i);
+					this.finish(); // Finish this activity
 				} else {
 					//Toast.makeText(this, "Sorry. Can't get the return value. Please check the reception and retry later.", Toast.LENGTH_SHORT).show();
 					Toast.makeText(this, R.string.access_error, Toast.LENGTH_SHORT).show();
@@ -212,6 +209,7 @@ public class SearchBookWeb extends ZXingTestActivity
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
+				BookListActivity.requestFinishActivity();
 				finish();
 			}
 		});
