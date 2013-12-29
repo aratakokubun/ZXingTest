@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class BookAdd extends LayoutView {
 	private EditText title;
@@ -31,6 +32,7 @@ public class BookAdd extends LayoutView {
 	
 	private ArrayList<CategoryRow> categoryList;
 
+	/* -------------------------------------------------------------------------------------------- */
 	public BookAdd(BookListActivity bookListActivity) {
 		super(bookListActivity);
 	}
@@ -45,9 +47,13 @@ public class BookAdd extends LayoutView {
 		finish.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setBookInfo();
-				saveBookInfo();
-				moveBackToList();
+				if(isEditTextEmpty()){
+					Toast.makeText(activity, activity.getString(R.string.input_invalid), Toast.LENGTH_SHORT).show();
+				} else {
+					setBookInfo();
+					saveBookInfo();
+					moveBackToList();
+				}
 			}
 		});
 		
@@ -145,6 +151,16 @@ public class BookAdd extends LayoutView {
 		activity.changeView(BookListActivity.BOOK_LIST);
 	}
 	
+	private boolean isEditTextEmpty(){
+		if(title.getText().toString().equals("")){
+			return true;
+		} else if(author.getText().toString().equals("")){
+			return true;
+		}
+		return false;
+	}
+	
+	/* -------------------------------------------------------------------------------------------- */
 	@Override
 	public void startView(){
 	}
@@ -161,7 +177,7 @@ public class BookAdd extends LayoutView {
 		return prepared;
 	}
 	
-	//--------------------------------------------------------------------------------------------
+	/* -------------------------------------------------------------------------------------------- */
 	public static void setBookDetailInfo(BookRow item)
 	{
 		bookRow = item;

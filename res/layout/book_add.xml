@@ -104,7 +104,8 @@
 		                android:id="@+id/price_value_box"
 		                style="@style/detail_value_box"
 		                android:text="@string/dummy"
-		                android:maxLength="255" />
+		                android:maxLength="5"
+		                android:inputType="number" />
 		            
 		        </LinearLayout>
 		        
@@ -120,7 +121,7 @@
 		                android:id="@+id/note_value_box"
 		                style="@style/detail_value_box"
 		                android:text="@string/dummy"
-		                android:maxLength="255" />
+		                android:maxLength="511" />
 		            
 		        </LinearLayout>
 		
@@ -137,14 +138,32 @@
 			            style="@style/select_category_spinner" />
 		        </LinearLayout>
 		
-		        <Spinner
-		            android:id="@+id/spinner_sellput"
-		            style="@style/select_category_spinner" />
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/sellput_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/sellput_box" />
+		            			
+			        <Spinner
+			            android:id="@+id/spinner_sellput"
+			            style="@style/select_category_spinner" />
+			    </LinearLayout>
 		        		
-		        <Spinner
-		            android:id="@+id/spinner_contents"
-		            style="@style/select_category_spinner" />
-		        		    
+		        <LinearLayout
+		            style="@style/frame_box" >
+			        		
+		            <TextView
+		                android:id="@+id/contents_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/contents_box" />
+		            		
+			        <Spinner
+			            android:id="@+id/spinner_contents"
+			            style="@style/select_category_spinner" />
+			    </LinearLayout>
+
 		        <LinearLayout 
 		            style="@style/box"
 		            android:layout_marginTop="8dp" >

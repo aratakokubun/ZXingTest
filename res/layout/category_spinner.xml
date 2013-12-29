@@ -13,6 +13,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:gravity="center_vertical"
+        android:layout_gravity="center"
         android:text="@string/temp"
         android:textColor="@color/text_dark_gray"
         android:textAppearance="?android:attr/textAppearanceMedium" />

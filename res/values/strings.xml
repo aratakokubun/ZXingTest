@@ -62,7 +62,10 @@
 	<string name="read_error">バーコードの読み込みに失敗しました．もう一度読み込みを試してみてください．</string>
 	<string name="get_error">本の情報を取得できませんでした．電波のいい場所で再度試すか，リストへの追加を手動で行ってください．</string>
 	<string name="access_error">通信に失敗しました．電波のいい場所で再度試してください．</string>
-	
+	<!-- リストにデータが存在しないときのメッセージ -->
+	<string name="list_empty">リストに本がありません．</string>
+	<!-- 入力が正しくない場合のメッセージ -->
+	<string name="input_invalid">タイトルと著者名を入力してください</string>
 	<!-- 修了ボタンを押した際のアラートメッセージ -->
 	<string name="finish_alert">アプリを終了しますか？</string>
 	

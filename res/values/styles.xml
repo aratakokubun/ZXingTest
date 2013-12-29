@@ -227,22 +227,21 @@
     
     <!-- Spinner Items -->
     <style name="select_category_spinner">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">54dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginLeft">4dp</item>
         <item name="android:layout_marginRight">4dp</item>
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:background">@layout/border_insert_value</item>
         <item name="android:textColor">@color/text_dark_gray</item>
-	</style>
+        <item name="android:background">@color/white_box</item>
+    </style>
 	
     <style name="spinner_icons" parent="android:Widget.DropDownItem.Spinner">  
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">54dp</item>
         <item name="android:layout_marginLeft">4dp</item>
         <item name="android:layout_marginRight">4dp</item>
         <item name="android:layout_marginTop">2dp</item>

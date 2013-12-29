@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BookListScrollMenu extends ScrollLayoutView {
 	private static final int MENU_IDX = 1;
@@ -117,6 +118,7 @@ public class BookListScrollMenu extends ScrollLayoutView {
 		@Override
 		public void dispatchMessage(Message msg){
 			if(msg.what == REQUEST_INIT_SCROLL){
+				// TODO 原因が特定でき次第修正	
 				// startView の後にscrollするメソッドが呼ばれており，その場所が不明のため，ここで時間遅れで再度scroll位置を戻している
 				scrollView.scrollTo(0, 0);
 			}
@@ -207,9 +209,13 @@ public class BookListScrollMenu extends ScrollLayoutView {
 			activity.changeView(BookListActivity.BOOK_ADD);
 			break;
 		case Settings.DELETE:
-			adapter.changeMode();
-			setBookList();
-			setting.performClick();
+			if(bookList.size() > 0){
+				adapter.changeMode();
+				setBookList();
+				setting.performClick();
+			} else {
+				Toast.makeText(activity, activity.getString(R.string.list_empty), Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case Settings.SEARCH:
 			// TODO
