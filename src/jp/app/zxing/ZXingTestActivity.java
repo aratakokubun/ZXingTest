@@ -103,6 +103,7 @@ public class ZXingTestActivity extends Activity
     	}
     }
     
+    /* ---------------------------------------------------------------------- */
 	@SuppressWarnings("deprecation")
 	@Override
     protected void onResume() {
@@ -170,6 +171,7 @@ public class ZXingTestActivity extends Activity
         return true;
     }
  
+    /* ---------------------------------------------------------------------- */
     /** Camera.PreviewCallback */
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
@@ -249,6 +251,7 @@ public class ZXingTestActivity extends Activity
     {
     }
      
+    /* ---------------------------------------------------------------------- */
     /**
      * カメラ情報を初期化
      * @param holder

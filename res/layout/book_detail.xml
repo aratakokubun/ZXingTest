@@ -27,7 +27,8 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/frame_box" >
+            style="@style/frame_box"
+            android:layout_marginTop="4dp" >
             <TextView
                 android:id="@+id/title_box"
                 style="@style/detail_text_box"

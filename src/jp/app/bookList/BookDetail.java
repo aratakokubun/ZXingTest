@@ -3,10 +3,8 @@ package jp.app.bookList;
 import jp.app.twitter.TwitterOuath;
 import jp.app.twitter.TwitterUtils;
 import jp.app.zxing.R;
-import android.app.Dialog;
 import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +21,6 @@ public class BookDetail extends LayoutView {
 	private static LinearLayout tweet;
 	
 	private static BookRow bookRow;
-	private static Dialog dialog;
 
 	public BookDetail(BookListActivity bookListActivity) {
 		super(bookListActivity);
@@ -112,15 +109,6 @@ public class BookDetail extends LayoutView {
 	{
         Intent intent = new Intent(activity, TwitterOuath.class);
         activity.startActivity(intent);
-	}
-	
-	// -------------------------------------------------------------------------------------------------//
-	private void showDialog(String title, View content) {
-		dialog = new Dialog(activity);
-		dialog.setTitle(title);
-		dialog.setContentView(content);
-		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		dialog.show();
 	}
 
 }

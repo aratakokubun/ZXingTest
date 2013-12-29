@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white_back" >
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_theme"
+            android:gravity="right" >
+
+            <TextView
+                style="@style/header"
+                android:text="@string/detail_edit_header" />
+            
+        </LinearLayout>
+        
+        <ScrollView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_back" >
+	        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+    			android:orientation="vertical"
+            	android:background="@color/white_back" >
+	            
+		        <LinearLayout
+		            style="@style/frame_box"
+		            android:layout_marginTop="4dp" >
+		            <TextView
+		                android:id="@+id/title_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/title_box" />
+		
+		            <EditText
+		                android:id="@+id/title_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/author_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/author_box" />
+		            
+		            <EditText
+		                android:id="@+id/author_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		            
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/label_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/label_box" />
+		            
+		            <EditText
+		                android:id="@+id/label_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		            
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/binding_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/binding_box" />
+		            
+		            <EditText
+		                android:id="@+id/binding_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		            
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/price_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/price_box" />
+		            
+		            <EditText
+		                android:id="@+id/price_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		            
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/note_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/note_box" />
+		            
+		            <EditText
+		                android:id="@+id/note_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy"
+		                android:maxLength="255" />
+		            
+		        </LinearLayout>
+		
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/market_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/market_box" />
+		            
+		        	<Spinner
+			            android:id="@+id/spinner_market"
+			            style="@style/select_category_spinner" />
+		        </LinearLayout>
+		
+		        <Spinner
+		            android:id="@+id/spinner_sellput"
+		            style="@style/select_category_spinner" />
+		        		
+		        <Spinner
+		            android:id="@+id/spinner_contents"
+		            style="@style/select_category_spinner" />
+		        		    
+		        <LinearLayout 
+		            style="@style/box"
+		            android:layout_marginTop="8dp" >
+			            
+			        <ImageView
+			            android:id="@+id/button_finish"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:contentDescription="@string/dummy"
+			            android:src="@drawable/button_finish_flat" />
+			        
+			        <View
+			            android:layout_width="0dp"
+			            android:layout_height="0dp"
+			            android:layout_weight="1"/>
+			            
+			        <ImageView
+			            android:id="@+id/button_cancel"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:contentDescription="@string/dummy"
+			            android:src="@drawable/button_cancel_flat" />		        
+		        </LinearLayout>
+	                
+            </LinearLayout>
+            
+        </ScrollView>
+        
+</LinearLayout>

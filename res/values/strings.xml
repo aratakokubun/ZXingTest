@@ -36,6 +36,11 @@
 	<string name="binding_box">本の分類</string>
 	<string name="price_box">価格</string>
 	<string name="note_box">メモ</string>
+	<!-- book add -->
+	<string name="detail_edit_header">本の追加</string>
+	<string name="market_box">販売対象</string>
+	<string name="sellput_box">発売形態</string>
+	<string name="contents_box">内容</string>
 	<!-- book add note -->
 	<string name="add_note_header">メモの追加・編集</string>
 	<string name="add_note_content">メモの内容</string>

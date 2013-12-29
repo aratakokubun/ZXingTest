@@ -155,6 +155,9 @@ public class FileBookData extends FileIO {
 				book.put(J.BINDING, bookRow.getBinding());
 				book.put(J.PRICE, bookRow.getPrice());
 				book.put(J.NOTE, bookRow.getNote());
+				book.put(J.MARKET, bookRow.getMarket());
+				book.put(J.SELLPUT, bookRow.getSellput());
+				book.put(J.CONTENTS, bookRow.getContents());
 				book.put(J.FIRST, bookRow.getFirst());
 				book.put(J.LATEST, bookRow.getLatest());
 				book.put(J.REPETITION, bookRow.getRepetition());
@@ -188,6 +191,9 @@ public class FileBookData extends FileIO {
 					json.getString(J.BINDING),
 					json.getString(J.PRICE),
 					json.getString(J.NOTE),
+					json.getString(J.MARKET),
+					json.getString(J.SELLPUT),
+					json.getString(J.CONTENTS),
 					json.getString(J.FIRST),
 					json.getString(J.LATEST),
 					json.getString(J.REPETITION));
@@ -212,6 +218,9 @@ public class FileBookData extends FileIO {
 				book.put(J.BINDING, bookRow.getBinding());
 				book.put(J.PRICE, bookRow.getPrice());
 				book.put(J.NOTE, bookRow.getNote());
+				book.put(J.MARKET, bookRow.getMarket());
+				book.put(J.SELLPUT, bookRow.getSellput());
+				book.put(J.CONTENTS, bookRow.getContents());
 				book.put(J.FIRST, bookRow.getFirst());
 				book.put(J.LATEST, bookRow.getLatest());
 				book.put(J.REPETITION, bookRow.getRepetition());

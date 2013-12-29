@@ -164,6 +164,9 @@ public class BookListScrollMenu extends ScrollLayoutView {
 							next.getString(J.BINDING),
 							next.getString(J.PRICE),
 							next.getString(J.NOTE),
+							next.getString(J.MARKET),
+							next.getString(J.SELLPUT),
+							next.getString(J.CONTENTS),
 							next.getString(J.FIRST),
 							next.getString(J.LATEST),
 							next.getString(J.REPETITION))
@@ -200,7 +203,8 @@ public class BookListScrollMenu extends ScrollLayoutView {
 			activity.moveToCamera();
 			break;
 		case Settings.MANUAL_ADD:
-			// TODO
+			activity.requestPrepare(BookListActivity.BOOK_ADD);
+			activity.changeView(BookListActivity.BOOK_ADD);
 			break;
 		case Settings.DELETE:
 			adapter.changeMode();

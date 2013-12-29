@@ -1,25 +1,19 @@
 package jp.app.zxing;
 
-import jp.app.barcode.Contents;
-import jp.app.barcode.Market;
-import jp.app.barcode.Sellput;
 import jp.app.bookList.BookDetail;
 import jp.app.bookList.BookListActivity;
 import jp.app.bookList.BookRow;
+import jp.app.controller.LaunchDialogHandler;
 import jp.app.fileio.FileBookData;
 import jp.app.httppost.ManageRequestCode;
 import jp.app.httppost.NetworkConnection;
 import jp.app.httppost.OPERATION_CODE;
 import jp.app.httppost.RESPONSE_CODE;
 import jp.app.httppost.RESPONSE_GROUP_CODE;
-import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,8 +34,6 @@ public class SearchBookWeb extends ZXingTestActivity
 	
 	private String temp_isbn = null;
 	private String temp_step_2 = null;
-	
-	private Dialog dialog;
 	
 	/*---------------------------------------------------------------------------------------*/
     public void onCreate(Bundle savedInstanceState) {
@@ -96,21 +88,8 @@ public class SearchBookWeb extends ZXingTestActivity
 	/*---------------------------------------------------------------------------------------*/
 	private void decodeJanStep2(String jan)
 	{
-		String category = jan.substring(3, 7);
-		String cost = jan.substring(7, 12);
 		temp_step_2 = jan;
 		searchIsbnWeb();
-	}
-	
-	private void getCategory(String category)
-	{
-		int marketCode = Integer.getInteger((String)category.subSequence(0, 1));
-		int sellputCode = Integer.getInteger((String)category.subSequence(1, 2));
-		int contentCode = Integer.getInteger((String)category.subSequence(2, 4));
-		
-		String marketName = Market.getMarketName(marketCode);
-		String sellputName = Sellput.getSellputName(sellputCode);
-		String contentName = Contents.getContentName(contentCode);
 	}
 	
 	/*---------------------------------------------------------------------------------------*/
@@ -202,32 +181,25 @@ public class SearchBookWeb extends ZXingTestActivity
 	}
 
 	private void showFinishAlert(){
-		showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
+		final LaunchDialogHandler ldh = LaunchDialogHandler.getInstance();
+		ldh.showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
 		
-		final ImageView yes = (ImageView) dialog.findViewById(R.id.button_yes);
+		final ImageView yes = (ImageView) ldh.findViewById(R.id.button_yes);
 		yes.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				dialog.dismiss();
+				ldh.dismissDialog();
 				BookListActivity.requestFinishActivity();
 				finish();
 			}
 		});
 		
-		final ImageView no = (ImageView) dialog.findViewById(R.id.button_no);
+		final ImageView no = (ImageView) ldh.findViewById(R.id.button_no);
 		no.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				dialog.dismiss();
+				ldh.dismissDialog();
 			}
 		});
-	}
-	
-	private void showDialog(View content) {
-		dialog = new Dialog(this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setContentView(content);
-		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		dialog.show();
 	}
 }

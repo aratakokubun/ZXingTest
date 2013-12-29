@@ -14,6 +14,9 @@ public class J {
 	/** xxxxx */					public static final String BINDING = "binding";
 	/** xxxxx */					public static final String PRICE = "price";
 	/** xxxxx */					public static final String NOTE = "note";
+	/** xxxxx */					public static final String MARKET = "Market";
+	/** xxxxx */					public static final String SELLPUT = "Sellput";
+	/** xxxxx */					public static final String CONTENTS = "Contents";
 	/** yy:MM:dd-hh:mm:ss */		public static final String FIRST = "fitst_time";
 	/** yy:MM:dd-hh:mm:ss */		public static final String LATEST = "latest_time";
 	/** n */						public static final String REPETITION = "repetition";

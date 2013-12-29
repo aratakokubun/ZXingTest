@@ -1,5 +1,7 @@
 package jp.app.barcode;
 
+import java.util.ArrayList;
+
 public class Market
 {
 	public static final int CODE_GENERAL = 0;
@@ -47,5 +49,31 @@ public class Market
 		default:
 			return NAME_NONE;
 		}
+	}
+	
+	public static void setArrayListAllStrings(ArrayList<String> list){
+		list.add(NAME_GENERAL);
+		list.add(NAME_EDUCATION);
+		list.add(NAME_PRACTICAL);
+		list.add(NAME_SPECIALITY);
+		list.add(NAME_NONE);
+		list.add(NAME_LADY);
+		list.add(NAME_STUDYMIDDLE);
+		list.add(NAME_STUDYHIGH);
+		list.add(NAME_CHILD);
+		list.add(NAME_MAGAZINE);
+	}
+	
+	public static void setArrayListAllItems(ArrayList<CategoryRow> list){
+		list.add(new CategoryRow(CODE_GENERAL, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_EDUCATION, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_PRACTICAL, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_SPECIALITY, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_NONE, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_LADY, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_STUDYMIDDLE, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_STUDYHIGH, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_CHILD, CategoryRow.MARKET));
+		list.add(new CategoryRow(CODE_MAGAZINE, CategoryRow.MARKET));
 	}
 }

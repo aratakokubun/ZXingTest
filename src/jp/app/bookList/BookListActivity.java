@@ -1,18 +1,16 @@
 package jp.app.bookList;
 
+import jp.app.controller.LaunchDialogHandler;
 import jp.app.fileio.FileBookData;
 import jp.app.zxing.R;
 import jp.app.zxing.SearchBookWeb;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,8 +20,9 @@ public class BookListActivity extends Activity
 {
 	public static final int BOOK_LIST = 0;
 	public static final int BOOK_DETAIL = 1;
-	public static final int BOOK_ADD_NOTE = 2;
-	public static final int VIEW_LENGTH = 3;
+	public static final int BOOK_ADD = 2;
+	public static final int BOOK_ADD_NOTE = 3;
+	public static final int VIEW_LENGTH = 4;
 	
 	private static final LayoutView[] lv = new LayoutView[VIEW_LENGTH];
 	private static int viewId;
@@ -33,8 +32,6 @@ public class BookListActivity extends Activity
 	private static LinearLayout content;
 	
 	public FileBookData fileBookData;
-	
-	private Dialog dialog;
 	
 	private static boolean requestFinishActivityFromCamera = false;
 	
@@ -50,6 +47,7 @@ public class BookListActivity extends Activity
 		title = (LinearLayout) findViewById(R.id.title);
 		content = (LinearLayout) findViewById(R.id.content);
 		initAllView();
+		LaunchDialogHandler.getInstance().setActivity(this);
 		
 		try{
 			changeView(launchViewId);
@@ -103,6 +101,8 @@ public class BookListActivity extends Activity
 			case BOOK_DETAIL:
 				changeView(BOOK_LIST);
 				return false;
+			case BOOK_ADD:
+				return false;
 			case BOOK_ADD_NOTE:
 				return false;
 			}
@@ -112,40 +112,35 @@ public class BookListActivity extends Activity
 
 
 	private void showFinishAlert(){
-		showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
+		final LaunchDialogHandler ldh = LaunchDialogHandler.getInstance();
+		ldh.showDialog(getLayoutInflater().inflate(R.layout.finish_alert, null));
 		
-		final ImageView yes = (ImageView) dialog.findViewById(R.id.button_yes);
+		final ImageView yes = (ImageView) ldh.findViewById(R.id.button_yes);
 		yes.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				dialog.dismiss();
+				ldh.dismissDialog();
 				finish();
 			}
 		});
 		
-		final ImageView no = (ImageView) dialog.findViewById(R.id.button_no);
+		final ImageView no = (ImageView) ldh.findViewById(R.id.button_no);
 		no.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				dialog.dismiss();
+				ldh.dismissDialog();
 			}
 		});
 	}
 	
-	private void showDialog(View content) {
-		dialog = new Dialog(this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setContentView(content);
-		dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		dialog.show();
-	}
-
 	/*---------------------------------------------------------------------------------------*/
 	private void initAllView() {
 		lv[BOOK_LIST] = new BookListScrollMenu(this);
 		lv[BOOK_LIST].initScrollView(R.layout.horz_scroll_with_list_menu, R.layout.book_list_menu, R.layout.book_list);
 		lv[BOOK_DETAIL] = new BookDetail(this);
 		lv[BOOK_DETAIL].initView(R.layout.book_detail);
+		lv[BOOK_ADD] = new BookAdd(this);
+		lv[BOOK_ADD].initView(R.layout.book_add);
 		lv[BOOK_ADD_NOTE] = new BookAddNote(this);
 		lv[BOOK_ADD_NOTE].initView(R.layout.book_add_note);
 	}

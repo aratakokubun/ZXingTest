@@ -21,9 +21,6 @@ public class BookList extends LayoutView {
 	private static ListView book;
 	private static ArrayList<BookRow> list;
 	private static BookListRowAdapter adapter;
-
-	// TODO
-	// ios の様な削除編集．各リストに対してサイドから削除ボタンがにゅっと出て来る感じ
 	
 	public BookList(BookListActivity bookListActivity) {
 		super(bookListActivity);
@@ -100,6 +97,9 @@ public class BookList extends LayoutView {
 							next.getString(J.BINDING),
 							next.getString(J.PRICE),
 							next.getString(J.NOTE),
+							next.getString(J.MARKET),
+							next.getString(J.SELLPUT),
+							next.getString(J.CONTENTS),
 							next.getString(J.FIRST),
 							next.getString(J.LATEST),
 							next.getString(J.REPETITION))

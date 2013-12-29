@@ -1,5 +1,7 @@
 package jp.app.barcode;
 
+import java.util.ArrayList;
+
 
 public class Contents
 {
@@ -69,6 +71,7 @@ public class Contents
 	public static final int CODE_CRITICISM_AND_ESSAY = 95;
 	public static final int CODE_FOREIGNNOVEL = 97;
 	public static final int CODE_FOREIGNLITERATURE = 98;
+	public static final int CODE_NONE = 99;
 
 	public static final String NAME_GENERALDESCRIPTION = "総記";
 	public static final String NAME_ENCYCLOPEDIA = "百科事典";
@@ -137,7 +140,7 @@ public class Contents
 	public static final String NAME_FOREIGNNOVEL = "外国文学小説";
 	public static final String NAME_FOREIGNLITERATURE = "外国文学";
 	public static final String NAME_NONE = "該当なし";
-
+	
 	public static String getContentName(int code) {
 		switch(code) {
 		case CODE_GENERALDESCRIPTION:
@@ -275,5 +278,145 @@ public class Contents
 		default:
 			return NAME_NONE;
 		}
+	}
+	
+	public static void setArrayListAllStrings(ArrayList<String> list){
+		list.add(NAME_GENERALDESCRIPTION);
+		list.add(NAME_ENCYCLOPEDIA);
+		list.add(NAME_ALMANACMAGAZINE);
+		list.add(NAME_INFORMATIONSCIENCE);
+		list.add(NAME_PHILOSOPHY);
+		list.add(NAME_PSYCOLOGY);
+		list.add(NAME_ETHICS);
+		list.add(NAME_RELIGION);
+		list.add(NAME_BUDDHISM);
+		list.add(NAME_CHRISTIANITY);
+		list.add(NAME_TOTAL_HISTORY);
+		list.add(NAME_JAPANESEHISTORY);
+		list.add(NAME_FOREIGNHISTORY);
+		list.add(NAME_BIOGRAPHY);
+		list.add(NAME_GEOGRAPHY);
+		list.add(NAME_TRAVEL);
+		list.add(NAME_TOTAL_SOCIALSCIENCE);
+		list.add(NAME_POLITICS);
+		list.add(NAME_LAW);
+		list.add(NAME_ECONOMY);
+		list.add(NAME_MANAGEMENT);
+		list.add(NAME_SOCIETY);
+		list.add(NAME_EDUCATION);
+		list.add(NAME_CUSTOM);
+		list.add(NAME_TOTAL_NATURALSCIENCE);
+		list.add(NAME_PHYSICS);
+		list.add(NAME_CHEMISTRY);
+		list.add(NAME_ASTRONOMY);
+		list.add(NAME_BIOLOGY);
+		list.add(NAME_MEDICINE);
+		list.add(NAME_ENGINEERING);
+		list.add(NAME_ENGINEERING_WORK);
+		list.add(NAME_CONSTRUCTION);
+		list.add(NAME_MACHINE);
+		list.add(NAME_ELECTRICITY);
+		list.add(NAME_ELECTRONIC_COMMUNICATIONS);
+		list.add(NAME_MARINEAFFAIRS);
+		list.add(NAME_MINING);
+		list.add(NAME_OTHER_INDUSTRY);
+		list.add(NAME_TOTAL_INDUSTRY);
+		list.add(NAME_AGRICULTURE);
+		list.add(NAME_FISHERIES);
+		list.add(NAME_COMMERCE);
+		list.add(NAME_TRAFFIC);
+		list.add(NAME_TOTAL_ART);
+		list.add(NAME_PICTURE_AND_SCULPTURE);
+		list.add(NAME_PHOTOGRAPH_AND_CRAFT);
+		list.add(NAME_MUSIC_AND_DANCE);
+		list.add(NAME_THEATRE_AND_MOVIE);
+		list.add(NAME_GYMNASTICS_AND_SPORT);
+		list.add(NAME_AMUSEMENT);
+		list.add(NAME_HOUSEKEEP);
+		list.add(NAME_COMMIC_AND_GRAPHICNOVEL);
+		list.add(NAME_TOTAL_LANGUAGE);
+		list.add(NAME_JAPANESE);
+		list.add(NAME_ENGLISH);
+		list.add(NAME_GERMAN);
+		list.add(NAME_FRENCH);
+		list.add(NAME_LANGUAGES);
+		list.add(NAME_TOTAL_LITERATURE);
+		list.add(NAME_TOTAL_JAPANESELITERATURE);
+		list.add(NAME_JAPANESEPOEM);
+		list.add(NAME_JAPANESENOVEL_AND_TALE);
+		list.add(NAME_CRITICISM_AND_ESSAY);
+		list.add(NAME_FOREIGNNOVEL);
+		list.add(NAME_FOREIGNLITERATURE);
+		list.add(NAME_NONE);
+	}
+	
+	public static void setArrayListAllItems(ArrayList<CategoryRow> list){
+		list.add(new CategoryRow(CODE_GENERALDESCRIPTION, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ENCYCLOPEDIA, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ALMANACMAGAZINE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_INFORMATIONSCIENCE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_PHILOSOPHY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_PSYCOLOGY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ETHICS, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_RELIGION, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_BUDDHISM, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_CHRISTIANITY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_HISTORY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_JAPANESEHISTORY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_FOREIGNHISTORY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_BIOGRAPHY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_GEOGRAPHY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TRAVEL, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_SOCIALSCIENCE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_POLITICS, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_LAW, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ECONOMY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MANAGEMENT, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_SOCIETY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_EDUCATION, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_CUSTOM, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_NATURALSCIENCE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_PHYSICS, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_CHEMISTRY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ASTRONOMY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_BIOLOGY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MEDICINE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ENGINEERING, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ENGINEERING_WORK, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_CONSTRUCTION, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MACHINE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ELECTRICITY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ELECTRONIC_COMMUNICATIONS, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MARINEAFFAIRS, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MINING, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_OTHER_INDUSTRY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_INDUSTRY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_AGRICULTURE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_FISHERIES, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_COMMERCE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TRAFFIC, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_ART, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_PICTURE_AND_SCULPTURE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_PHOTOGRAPH_AND_CRAFT, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_MUSIC_AND_DANCE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_THEATRE_AND_MOVIE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_GYMNASTICS_AND_SPORT, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_AMUSEMENT, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_HOUSEKEEP, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_COMMIC_AND_GRAPHICNOVEL, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_LANGUAGE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_JAPANESE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_ENGLISH, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_GERMAN, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_FRENCH, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_LANGUAGES, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_LITERATURE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_TOTAL_JAPANESELITERATURE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_JAPANESEPOEM, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_JAPANESENOVEL_AND_TALE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_CRITICISM_AND_ESSAY, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_FOREIGNNOVEL, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_FOREIGNLITERATURE, CategoryRow.CONTENTS));
+		list.add(new CategoryRow(CODE_NONE, CategoryRow.CONTENTS));
 	}
 }

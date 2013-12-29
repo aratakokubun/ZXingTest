@@ -128,11 +128,11 @@
         <item name="android:contentDescription">@string/dummy</item>
     </style>
 
-    <!-- book detail text view -->
+    <!-- book detail text view box -->
     <style name="header">
         <item name="android:id">@+id/header</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">54dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white_back</item>
@@ -182,6 +182,17 @@
         <item name="android:textColor">@color/text_dark_gray</item>
     </style>
     
+    <style name="box">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
     <style name="frame_box">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -212,6 +223,34 @@
         <item name="android:orientation">vertical</item>
         <item name="android:background">@layout/border_insert</item>
         <item name="android:gravity">center_vertical|left</item>
+    </style>
+    
+    <!-- Spinner Items -->
+    <style name="select_category_spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@layout/border_insert_value</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+	</style>
+	
+    <style name="spinner_icons" parent="android:Widget.DropDownItem.Spinner">  
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@layout/border_insert_value</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+        <item name="android:checkMark">@drawable/spinner_selecter</item>
     </style>
     
 </resources>
