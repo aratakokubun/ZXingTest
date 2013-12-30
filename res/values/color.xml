@@ -14,7 +14,9 @@
     <color name="reader_back">#55ff6666</color>
     <color name="reader_margin">#55666666</color>
     <color name="tweet_back">#c0d0ff</color>
+    <color name="delete_back_light">#dd6080</color>
     <color name="delete_back">#ff2040</color>
+    <color name="delete_border">#ff0010</color>
     
     <!-- facebook like color code -->
     <color name="title_gray_back">#f2f2f2</color>

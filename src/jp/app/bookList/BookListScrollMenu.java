@@ -128,8 +128,8 @@ public class BookListScrollMenu extends ScrollLayoutView {
 	@Override
 	public boolean prepareView(){
 		if(!prepared) {
-			setBookList();
 			setMenuList();
+			setBookList();
 		}
 		return prepared;
 	}
@@ -154,28 +154,30 @@ public class BookListScrollMenu extends ScrollLayoutView {
 		int index = 0;
 		try{
 			JSONArray ja = activity.fileBookData.getBookJsonArray();
-			while(true){
-				if(ja.opt(index) != null){
-					JSONObject next = ja.getJSONObject(index);
-					bookList.add(new BookRow(
-							next.getString(J.ISBN),
-							next.getString(J.STEP_2),
-							next.getString(J.TITLE),
-							next.getString(J.AUTHOR),
-							next.getString(J.LABEL),
-							next.getString(J.BINDING),
-							next.getString(J.PRICE),
-							next.getString(J.NOTE),
-							next.getString(J.MARKET),
-							next.getString(J.SELLPUT),
-							next.getString(J.CONTENTS),
-							next.getString(J.FIRST),
-							next.getString(J.LATEST),
-							next.getString(J.REPETITION))
-					);
-					index++;
-				} else {
-					break;
+			if(ja != null){
+				while(true){
+					if(ja.opt(index) != null){
+						JSONObject next = ja.getJSONObject(index);
+						bookList.add(new BookRow(
+								next.getString(J.ISBN),
+								next.getString(J.STEP_2),
+								next.getString(J.TITLE),
+								next.getString(J.AUTHOR),
+								next.getString(J.LABEL),
+								next.getString(J.BINDING),
+								next.getString(J.PRICE),
+								next.getString(J.NOTE),
+								next.getString(J.MARKET),
+								next.getString(J.SELLPUT),
+								next.getString(J.CONTENTS),
+								next.getString(J.FIRST),
+								next.getString(J.LATEST),
+								next.getString(J.REPETITION))
+						);
+						index++;
+					} else {
+						break;
+					}
 				}
 			}
 			bookListView.setScrollingCacheEnabled(false); 

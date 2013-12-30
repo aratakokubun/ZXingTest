@@ -45,6 +45,7 @@ public class BookRow {
 		this.label = label;
 		this.binding = binding;
 		this.price = price;
+		this.note = new String();
 		this.market = market;
 		this.sellput = sellput;
 		this.contents = contents;

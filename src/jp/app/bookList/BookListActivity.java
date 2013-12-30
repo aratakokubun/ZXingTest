@@ -73,6 +73,8 @@ public class BookListActivity extends Activity
 			} catch (Exception e) {
 			}
 		}
+
+        LaunchDialogHandler.getInstance().setActivity(this);
 	}
 
 	@Override
@@ -191,7 +193,7 @@ public class BookListActivity extends Activity
 	/*---------------------------------------------------------------------------------------*/
 	public static void setLaunchActivity(int id)
 	{
-		viewId = id;
+		launchViewId = id;
 	}
 
 	/*---------------------------------------------------------------------------------------*/

@@ -1,5 +1,7 @@
 package jp.app.bookList;
 
+import java.util.NoSuchElementException;
+
 import jp.app.twitter.TwitterOuath;
 import jp.app.twitter.TwitterUtils;
 import jp.app.zxing.R;
@@ -8,17 +10,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BookDetail extends LayoutView {
-	private static TextView title;
-	private static TextView author;
-	private static TextView label;
-	private static TextView binding;
-	private static TextView price;
-	private static TextView note;
-	private static ImageView back;
-	private static ImageView edit;
-	private static LinearLayout tweet;
+	private TextView title;
+	private TextView author;
+	private TextView label;
+	private TextView binding;
+	private TextView price;
+	private TextView note;
+	private TextView market;
+	private TextView sellput;
+	private TextView contents;
+	private ImageView back;
+	private ImageView edit;
+	private LinearLayout tweet;
+	private LinearLayout delete;
 	
 	private static BookRow bookRow;
 
@@ -66,6 +73,15 @@ public class BookDetail extends LayoutView {
 				// TODO
 			}
 		});
+		
+		// Delete button
+		delete = (LinearLayout) view.findViewById(R.id.button_delete);
+		delete.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				deleteItem();
+			}
+		});
 	}
 	
 	//--------------------------------------------------------------------------------------------
@@ -84,6 +100,12 @@ public class BookDetail extends LayoutView {
 		price.setText(bookRow.getPrice());
 		note = (TextView) view.findViewById(R.id.note_value_box);
 		note.setText(bookRow.getNote());
+		market = (TextView) view.findViewById(R.id.market_value_box);
+		market.setText(bookRow.getMarket());
+		sellput = (TextView) view.findViewById(R.id.sellput_value_box);
+		sellput.setText(bookRow.getSellput());
+		contents = (TextView) view.findViewById(R.id.contents_value_box);
+		contents.setText(bookRow.getContents());
 		prepared = true;
 	}
 	
@@ -109,6 +131,19 @@ public class BookDetail extends LayoutView {
 	{
         Intent intent = new Intent(activity, TwitterOuath.class);
         activity.startActivity(intent);
+	}
+
+	private void deleteItem(){
+		try {
+			activity.fileBookData.deleteBookArray(bookRow.getIsbn());
+			activity.requestPrepare(BookListActivity.BOOK_LIST);
+			activity.changeView(BookListActivity.BOOK_LIST);
+			Toast.makeText(activity, R.string.delete_complete, Toast.LENGTH_SHORT).show();
+		} catch(NoSuchElementException e){
+			e.printStackTrace();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

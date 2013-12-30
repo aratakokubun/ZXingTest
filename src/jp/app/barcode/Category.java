@@ -1,5 +1,7 @@
 package jp.app.barcode;
 
+
+
 public class Category {
 	private static Category instance = null;
 
@@ -15,25 +17,25 @@ public class Category {
 	}
 	
 	public String getMarketFromJanStep2(String jan){
-		String category = jan.substring(3, 7);
-		
-		int marketCode = Integer.getInteger((String)category.subSequence(0, 1));
-			
+		String market = jan.substring(3, 4);
+
+		int marketCode = Integer.valueOf(market);
+
 		return Market.getMarketName(marketCode);
 	}
 	
 	public String getSellputFromJanStep2(String jan){
-		String category = jan.substring(3, 7);
+		String sellput = jan.substring(4, 5);
 
-		int sellputCode = Integer.getInteger((String)category.subSequence(1, 2));
+		int sellputCode = Integer.valueOf(sellput);
 		
 		return Sellput.getSellputName(sellputCode);
 	}
 	
 	public String getContentFromJanStep2(String jan){
-		String category = jan.substring(3, 7);
+		String content = jan.substring(5, 7);
 		
-		int contentCode = Integer.getInteger((String)category.subSequence(2, 4));
+		int contentCode = Integer.valueOf(content);
 		
 		return Contents.getContentName(contentCode);
 	}
@@ -41,12 +43,13 @@ public class Category {
 	public int getCostFromJanStep2(String jan){
 		String cost = jan.substring(7, 12);
 		
-		return Integer.getInteger(cost);
+		return Integer.valueOf(cost);
 	}
 	
 	public static String makeJanStep2FromBookInfo(String market, String sellput, String contents, String amount){
 		final String STEP = "192"; // Shows tax 5% included. When the tax was 3%, this value equaled 191.
-		String category = market.substring(0, 1) + sellput.substring(0, 1) + contents.substring(0, 2);
+		String contents2Digit = (contents.length()==1 ? "0"+contents : contents.substring(0, 2));
+		String category = market.substring(0, 1) + sellput.substring(0, 1) + contents2Digit;
 		String cost = amount.substring(0, Math.min(amount.length(), 5));
 		for(int i = 0; i < 5 - amount.length(); i++){ cost = "0" + cost; } // Adjust length to 5
 		

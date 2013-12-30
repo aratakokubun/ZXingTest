@@ -127,6 +127,16 @@
         <item name="android:src">@drawable/icon_trash</item>
         <item name="android:contentDescription">@string/dummy</item>
     </style>
+    
+    <style name="delete_box">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginRight">38dp</item>
+        <item name="android:layout_marginLeft">38dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/icon_trash</item>
+        <item name="android:contentDescription">@string/dummy</item>
+    </style>
 
     <!-- book detail text view box -->
     <style name="header">
@@ -156,6 +166,7 @@
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/text_dark_gray</item>
         <item name="android:background">@color/white_box</item>
     </style>
@@ -223,6 +234,18 @@
         <item name="android:orientation">vertical</item>
         <item name="android:background">@layout/border_insert</item>
         <item name="android:gravity">center_vertical|left</item>
+    </style>
+    
+    <style name="frame_box_delete">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@layout/border_delete</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
     
     <!-- Spinner Items -->

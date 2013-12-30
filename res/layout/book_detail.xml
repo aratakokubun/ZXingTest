@@ -26,111 +26,172 @@
         		android:contentDescription="@string/dummy" />
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/frame_box"
-            android:layout_marginTop="4dp" >
-            <TextView
-                android:id="@+id/title_box"
-                style="@style/detail_text_box"
-                android:text="@string/title_box" />
-
-            <TextView
-                android:id="@+id/title_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box" >
-
-            <TextView
-                android:id="@+id/author_box"
-                style="@style/detail_text_box"
-                android:text="@string/author_box" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_back" >
             
-            <TextView
-                android:id="@+id/author_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box" >
-
-            <TextView
-                android:id="@+id/label_box"
-                style="@style/detail_text_box"
-                android:text="@string/label_box" />
-            
-            <TextView
-                android:id="@+id/label_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box" >
-
-            <TextView
-                android:id="@+id/binding_box"
-                style="@style/detail_text_box"
-                android:text="@string/binding_box" />
-            
-            <TextView
-                android:id="@+id/binding_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box" >
-
-            <TextView
-                android:id="@+id/price_box"
-                style="@style/detail_text_box"
-                android:text="@string/price_box" />
-            
-            <TextView
-                android:id="@+id/price_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box" >
-
-            <TextView
-                android:id="@+id/note_box"
-                style="@style/detail_text_box"
-                android:text="@string/note_box" />
-            
-            <TextView
-                android:id="@+id/note_value_box"
-                style="@style/detail_value_box"
-                android:text="@string/dummy" />
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            style="@style/frame_box_tweet"
-            android:id="@+id/button_tweet" >
-            
-            <ImageView
-                android:id="@+id/image_tweet"
-                style="@style/tweet"
-        		android:contentDescription="@string/dummy" />
-            
-            <TextView
-                android:id="@+id/text_tweet"
-                style="@style/detail_text_box"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:text="@string/tweet" />
+                android:layout_height="wrap_content"
+    			android:orientation="vertical"
+            	android:background="@color/white_back" >
+		        
+		        <LinearLayout
+		            style="@style/frame_box"
+		            android:layout_marginTop="4dp" >
+		            <TextView
+		                android:id="@+id/title_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/title_box" />
+		
+		            <TextView
+		                android:id="@+id/title_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/author_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/author_box" />
+		            
+		            <TextView
+		                android:id="@+id/author_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/label_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/label_box" />
+		            
+		            <TextView
+		                android:id="@+id/label_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/binding_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/binding_box" />
+		            
+		            <TextView
+		                android:id="@+id/binding_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/price_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/price_box" />
+		            
+		            <TextView
+		                android:id="@+id/price_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/note_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/note_box" />
+		            
+		            <TextView
+		                android:id="@+id/note_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
 
-        </LinearLayout>
-        
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/market_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/market_box" />
+		            
+		            <TextView
+		                android:id="@+id/market_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+		        </LinearLayout>
+		
+		        <LinearLayout
+		            style="@style/frame_box" >
+		
+		            <TextView
+		                android:id="@+id/sellput_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/sellput_box" />
+		            			
+		            <TextView
+		                android:id="@+id/sellput_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+			    </LinearLayout>
+		        		
+		        <LinearLayout
+		            style="@style/frame_box" >
+			        		
+		            <TextView
+		                android:id="@+id/contents_box"
+		                style="@style/detail_text_box"
+		                android:text="@string/contents_box" />
+		            		
+		            <TextView
+		                android:id="@+id/contents_value_box"
+		                style="@style/detail_value_box"
+		                android:text="@string/dummy" />
+			    </LinearLayout>
+		        		        
+		        <LinearLayout
+		            style="@style/frame_box_tweet"
+		            android:id="@+id/button_tweet" >
+		            
+		            <ImageView
+		                android:id="@+id/image_tweet"
+		                style="@style/tweet"
+		        		android:contentDescription="@string/dummy" />
+		            
+		            <TextView
+		                android:id="@+id/text_tweet"
+		                style="@style/detail_text_box"
+		                android:layout_width="match_parent"
+		                android:text="@string/tweet" />
+		        </LinearLayout>
+		        
+		        <LinearLayout
+		            style="@style/frame_box_delete"
+		            android:id="@+id/button_delete" >
+		            
+		            <ImageView
+		                style="@style/delete_box"
+		        		android:contentDescription="@string/dummy" />
+		            
+		            <TextView
+		                style="@style/detail_text_box"
+		                android:layout_width="match_parent"
+		                android:text="@string/delete" />
+		        </LinearLayout>
+		    </LinearLayout>    
+        </ScrollView>
 </LinearLayout>

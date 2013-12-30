@@ -61,7 +61,11 @@
 	<!-- エラー時のメッセージ -->
 	<string name="read_error">バーコードの読み込みに失敗しました．もう一度読み込みを試してみてください．</string>
 	<string name="get_error">本の情報を取得できませんでした．電波のいい場所で再度試すか，リストへの追加を手動で行ってください．</string>
+	<string name="decode_error">本の情報を取得しましたが，不明なレスポンスのため，正しいデータが得られませんでした．もう一度読み込みを試みてください．</string>
 	<string name="access_error">通信に失敗しました．電波のいい場所で再度試してください．</string>
+	<!-- 削除時のメッセージ -->
+	<string name="delete_complete">データを削除しました.</string>
+	<string name="delete_alert">本当にデータを削除しますか？</string>
 	<!-- リストにデータが存在しないときのメッセージ -->
 	<string name="list_empty">リストに本がありません．</string>
 	<!-- 入力が正しくない場合のメッセージ -->

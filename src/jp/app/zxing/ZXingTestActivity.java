@@ -3,6 +3,7 @@ package jp.app.zxing;
 import java.io.IOException;
 
 import jp.app.bookList.BookListActivity;
+import jp.app.controller.LaunchDialogHandler;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
@@ -117,6 +118,8 @@ public class ZXingTestActivity extends Activity
             holder.addCallback(this);
             holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
+        
+        LaunchDialogHandler.getInstance().setActivity(this);
     }
      
     @Override

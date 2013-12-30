@@ -33,7 +33,7 @@ public class SearchBookWeb extends ZXingTestActivity
 	private FileBookData fileBookData;
 	
 	private String temp_isbn = null;
-	private String temp_step_2 = null;
+	private String temp_step2 = null;
 	
 	/*---------------------------------------------------------------------------------------*/
     public void onCreate(Bundle savedInstanceState) {
@@ -86,9 +86,9 @@ public class SearchBookWeb extends ZXingTestActivity
 	}
 	
 	/*---------------------------------------------------------------------------------------*/
-	private void decodeJanStep2(String jan)
+	private void decodeJanStep2(String step2)
 	{
-		temp_step_2 = jan;
+		temp_step2 = step2;
 		searchIsbnWeb();
 	}
 	
@@ -101,26 +101,28 @@ public class SearchBookWeb extends ZXingTestActivity
 	/*---------------------------------------------------------------------------------------*/
 	private boolean searchIsbnWeb()
 	{
-		if(temp_isbn!=null && temp_step_2!=null){
+		if(temp_isbn!=null && temp_step2!=null){
 			int jsonIndex = fileBookData.searchBookJsonIndex(temp_isbn);
 			if(jsonIndex < 0){
-				// Check if Network(ex wifi) is enabled
+				// Check if Network(ex. wifi) is enabled
 				if(!NetworkConnection.isWifiConnected(this)){
 					Toast.makeText(this, R.string.access_error, Toast.LENGTH_SHORT).show();
 				} else {
 					int response = ManageRequestCode.throwHttpRequestCode
-							(temp_isbn, OPERATION_CODE.ITEM_LOOKUP, RESPONSE_GROUP_CODE.ITEMATTRIBUTES);
+							(temp_isbn, temp_step2, OPERATION_CODE.ITEM_LOOKUP, RESPONSE_GROUP_CODE.ITEMATTRIBUTES);
 					switch(response){
 					case RESPONSE_CODE.WIFI_ERROR:
 						Toast.makeText(this, R.string.access_error, Toast.LENGTH_SHORT).show();
 						break;
 					case RESPONSE_CODE.NO_DATA:
-					case RESPONSE_CODE.DECODE_ERROR:
 						Toast.makeText(this, R.string.get_error, Toast.LENGTH_SHORT).show();
 						break;
+					case RESPONSE_CODE.DECODE_ERROR:
+						Toast.makeText(this, R.string.decode_error, Toast.LENGTH_SHORT).show();
+						break;
 					case RESPONSE_CODE.CORRECTLY_DECODED:
-						fileBookData.putBookArray(ManageRequestCode.bookRow);
-						BookDetail.setBookDetailInfo(ManageRequestCode.bookRow);
+						fileBookData.putBookArray(ManageRequestCode.getBookRow());
+						BookDetail.setBookDetailInfo(ManageRequestCode.getBookRow());
 						moveToList(BookListActivity.BOOK_DETAIL);
 						break;
 					}
@@ -167,7 +169,7 @@ public class SearchBookWeb extends ZXingTestActivity
 	private void releaseTempCode()
 	{
 		temp_isbn = null;
-		temp_step_2 = null;
+		temp_step2 = null;
 	}
 	
 	/*---------------------------------------------------------------------------------------*/

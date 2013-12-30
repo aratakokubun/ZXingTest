@@ -9,6 +9,7 @@ import jp.app.barcode.Contents;
 import jp.app.barcode.Market;
 import jp.app.barcode.Sellput;
 import jp.app.zxing.R;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -115,13 +116,19 @@ public class BookAdd extends LayoutView {
 		int count = 0;
 		String isbn = new String();
 		while(duplicated){
-			int isbnInt = (int)(Math.random()*Math.pow(10, 12));
+			int isbnInt = (int)(Math.random()*Math.pow(10, 9));
 			isbn = String.valueOf(isbnInt);
 			duplicated = activity.fileBookData.searchBookIsbn(isbn);
-			if(count > (int)(Math.pow(10, 12))){
+			if(count > (int)(Math.pow(10, 9))){
 				break; // If no-duplicated isbn is not found after 10^12 trials, this application gives up to add it to database.
 			}
 		}
+		// Add 0s in head of isbn to make it in 10 characters
+		for(int i = 0; i < 10-isbn.length(); i++){
+			isbn = "0"+isbn;
+		}
+		// Add "978"(static) in head of isbn (13 characters) 
+		isbn = "978"+isbn;
 		
 		String strTitle = title.getText().toString();
 		String strAuthor = author.getText().toString();
@@ -133,8 +140,13 @@ public class BookAdd extends LayoutView {
 		String strSellput = ((CategoryRow)sellput.getSelectedItem()).getName();
 		String strContents = ((CategoryRow)contents.getSelectedItem()).getName();
 		
-		String step2 = Category.makeJanStep2FromBookInfo(strMarket, strSellput, strContents, strPrice);
+		String step2 = Category.makeJanStep2FromBookInfo(
+				String.valueOf(((CategoryRow)market.getSelectedItem()).getId()),
+				String.valueOf(((CategoryRow)sellput.getSelectedItem()).getId()),
+				String.valueOf(((CategoryRow)contents.getSelectedItem()).getId()),
+				strPrice);
 		
+		Log.i("TAG", "isbn:"+isbn+", step2:"+step2);
 		bookRow = new BookRow(isbn, step2, strTitle, strAuthor, strLabel, strBinding, strPrice, strMarket, strSellput, strContents);
 		bookRow.setNote(strNote);
 	}
